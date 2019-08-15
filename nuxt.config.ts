@@ -37,6 +37,7 @@ export default {
   css: [
   ],
   plugins: [
+    { src: '~plugins/ga.js', ssr: false }
   ],
   devModules: [
     '@nuxtjs/vuetify',
