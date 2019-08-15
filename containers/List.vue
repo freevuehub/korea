@@ -30,7 +30,7 @@
               size="80"
               color="grey lighten-3"
             >
-              <v-img :src="l.url.img"></v-img>
+              <v-img :src="l.url.img ? l.url.img : 'icons/icon-144x144.png'"></v-img>
             </v-list-item-avatar>
           </v-list-item>
         </v-card>
