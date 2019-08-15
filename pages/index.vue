@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card
+    <!-- <v-card
       outlined
       v-if="!flag"
     >
@@ -18,7 +18,7 @@
         height="100%"
         src="https://upload.wikimedia.org/wikipedia/commons/0/09/Flag_of_South_Korea.svg"
       ></v-img>
-    </v-card>
+    </v-card> -->
     <v-layout
       row
       wrap
@@ -56,7 +56,7 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters } from 'vuex';
 import { Vue, Component } from 'vue-property-decorator';
 import { MainConst } from '~/Constant';
