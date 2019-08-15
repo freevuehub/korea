@@ -1,17 +1,29 @@
 import { getList } from '~/API';
-import { MainConst } from '~/Constant';
+import { MainConst, SystemConst } from '~/Constant';
 import { ActionTree, MutationTree } from 'vuex'
 
 interface IMainState {
   list: string[]
+  snackStatus: {
+    view: boolean
+    msg: string
+  }
 }
 
 interface IMainModel {
   list: string[]
+  snackStatus: {
+    view: boolean
+    msg: string
+  }
 }
 
 export const state = (): IMainState => ({
-  list: []
+  list: [],
+  snackStatus: {
+    view: false,
+    msg: ''
+  }
 });
 
 export const mutations: MutationTree<IMainState> = {
@@ -19,11 +31,18 @@ export const mutations: MutationTree<IMainState> = {
     state.list = [
       ...payload
     ]
-  }
+  },
+  [SystemConst.$Set.Status]: (state, payload) => {
+    state.snackStatus = {
+      ...state.snackStatus,
+      ...payload
+    };
+  },
 };
 
 export const getters = {
-  [MainConst.$Get.List]: ({ list }) => list
+  [MainConst.$Get.List]: ({ list }) => list,
+  [SystemConst.$Get.Status]: ({ snackStatus }) => snackStatus,
 };
 
 export const actions: ActionTree<IMainState, IMainModel> = {
@@ -40,5 +59,10 @@ export const actions: ActionTree<IMainState, IMainModel> = {
       
       return reject(e);
     }
-  })
+  }),
+  [SystemConst.$Call.Status]: (store, model) => new Promise(resolve => {
+    store.commit(SystemConst.$Set.Status, model);
+
+    return resolve();
+  }),
 };

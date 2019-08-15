@@ -54,7 +54,7 @@ export default {
       dark: true,
       themes: {
         dark: {
-          
+          primary: '#72cc96'
         }
       }
     }

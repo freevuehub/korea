@@ -12,7 +12,9 @@
       :key="l.no"
       class="pa-2"
     >
-      <a :href="l.url.wiki ? l.url.wiki : ''" target="_blank">
+ <!-- :href="l.url.wiki ? l.url.wiki : ''" target="_blank" -->
+
+      <button @click.prevent="onClick(l.url.wiki)">
         <v-card
           mx-auto
           outlined
@@ -34,7 +36,7 @@
             </v-list-item-avatar>
           </v-list-item>
         </v-card>
-      </a>
+      </button>
     </v-flex>
   </v-layout>
 </template>
@@ -42,7 +44,7 @@
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
   import { mapGetters } from 'vuex';
-  import { MainConst } from '~/Constant';
+  import { MainConst, SystemConst } from '~/Constant';
   
   @Component({
     computed: {
@@ -51,5 +53,16 @@
       })
     }
   })
-  export default class List extends Vue {}
+  export default class List extends Vue {
+    onClick(url) {
+      if (url) {
+        window.open(url, '_blank');
+      } else {
+        this.$store.dispatch(SystemConst.$Call.Status, {
+          view: true,
+          msg: '죄송합니다. 이분에 대한 정보를 찾지 못했습니다.'
+        })
+      }
+    }
+  }
 </script>
