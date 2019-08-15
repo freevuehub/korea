@@ -4,16 +4,24 @@ import NuxtConfiguration from '@nuxt/config';
 export default {
   mode: 'spa',
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    title: 'Freevue - Korea',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+      { name: 'theme-color', content: '#ffffff' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: "Korea! Freevue's Small Project"
+      },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
+      { name: 'apple-mobile-web-app-title', content: 'Freevue POP' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', href: '/icons/icon-152x152.png' },
+    ],
   },
   loading: { color: '#fff' },
   css: [
@@ -44,5 +52,25 @@ export default {
     extend(config, ctx) {
       
     }
-  }
+  },
+  manifest: {
+    name: 'Freevue-Project',
+    short_name: 'Freevue-Korea',
+    start_url: '/',
+    Scope: '/',
+    splash_pages: null,
+    display: 'standalone',
+    background_color: '#ffffff',
+    theme_color: '#ffffff'
+  },
+  workbox: {
+    offline: false,
+    runtimeCaching: [
+      {
+        urlPattern: "/*",
+        handler: "networkFirst",
+        method: "GET"
+      }
+    ]
+  },
 } as NuxtConfiguration;
