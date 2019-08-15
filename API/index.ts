@@ -8,3 +8,11 @@ export function getList(): Promise<any> {
       .catch((e: AxiosError) => reject(e))
   );
 };
+
+export function getNewList(): Promise<any> {
+  return new Promise<any>(
+    (resolve, reject) => Axios.get(`http://27.101.201.20/opnAPI/publicReportList.do?nPageIndex=1`)
+      .then((res: AxiosResponse) => resolve(res))
+      .catch((e: AxiosError) => reject(e))
+  );
+};

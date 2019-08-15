@@ -1,4 +1,4 @@
-import { getList } from '~/API';
+import { getList, getNewList } from '~/API';
 import { MainConst, SystemConst } from '~/Constant';
 import { ActionTree, MutationTree } from 'vuex'
 
@@ -52,6 +52,10 @@ export const actions: ActionTree<IMainState, IMainModel> = {
       const { items } = data;
 
       store.commit(MainConst.$Set.List, items.list);
+      
+      const a = await getNewList();
+
+      console.log(a);
 
       return resolve(data);
     } catch(e) {

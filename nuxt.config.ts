@@ -45,8 +45,13 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxtjs/proxy'
   ],
   axios: {
+    proxy: true
+  },
+  proxy: {
+    '/Korea': 'http://e-gonghun.mpva.go.kr/opnAPI/publicReportList.do'
   },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -61,7 +66,6 @@ export default {
   },
   build: {
     extend(config, ctx) {
-      
     }
   },
   manifest: {
