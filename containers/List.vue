@@ -10,6 +10,7 @@
       xs12
       v-for="l in list"
       :key="l.no"
+      class="pa-2"
     >
       <a :href="l.url.wiki" target="_blank">
         <v-card
