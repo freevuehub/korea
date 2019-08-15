@@ -17,10 +17,13 @@
           mx-auto
           outlined
         >
-          <v-list-item three-line>
+          <v-list-item two-line>
             <v-list-item-content>
               <v-list-item-title class="headline mb-1">{{ l.name.kr }}</v-list-item-title>
-              <v-list-item-subtitle>{{ l.date.birth }} ~ {{ l.date.death }}</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                {{ l.date.birth }} ~ <br>
+                {{ l.date.death }}
+              </v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-avatar
               tile
