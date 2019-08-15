@@ -12,7 +12,7 @@
       :key="l.no"
       class="pa-2"
     >
-      <a :href="l.url.wiki" target="_blank">
+      <a :href="l.url.wiki ? l.url.wiki : ''" target="_blank">
         <v-card
           mx-auto
           outlined
