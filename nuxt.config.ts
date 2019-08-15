@@ -6,6 +6,7 @@ export default {
   head: {
     title: 'Freevue - Korea',
     meta: [
+      { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
       { name: 'theme-color', content: '#ffffff' },
@@ -17,6 +18,15 @@ export default {
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
       { name: 'apple-mobile-web-app-title', content: 'Freevue POP' },
+      { property: 'og:locale', content: 'ko_KR' },
+      { property: 'og:description', content: '기억하겠습니다.' },
+      { property: 'og:url', content: 'https://freevue-korea.netlify.com/' },
+      { property: 'og:site_name', content: 'Freevue-Korea' },
+      { property: 'og:image', content: 'https://freevuehub.github.io/images/com/share-logo.jpg' },
+      { property: 'twitter:description', content: '기억하겠습니다.' },
+      { property: 'twitter:title', content: 'Freevue-Korea' },
+      { property: 'twitter:image', content: 'https://freevuehub.github.io/images/com/share-logo.jpg' },
+      { property: 'twitter:card', content: 'summary' },
     ],
     link: [
       { rel: 'icon', href: '/favicon.ico' },
