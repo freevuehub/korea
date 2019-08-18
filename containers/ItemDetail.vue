@@ -102,11 +102,9 @@
   })
   export default class ItemDetail extends Vue {
     get achiveDetail() {
-      return this.detail.achive.contents.split('\n').filter(l => !!l);
-    };
+      const { detail }: any = this;
 
-    onScroll() {
-      console.log('aa');
-    }
+      return detail.achive.contents.split('\n').filter(l => !!l);
+    };
   }
 </script>

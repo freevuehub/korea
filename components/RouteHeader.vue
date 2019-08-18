@@ -38,7 +38,7 @@
   })
   export default class RouteHeader extends Vue {
     mounted() {
-      console.dir(this.$refs.imgRef);
+      // console.dir(this.$refs.imgRef);
     };// v-toolbar__content
   }
 </script>
