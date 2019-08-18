@@ -18,10 +18,22 @@
           </v-card-title>
           <v-divider></v-divider>
           <v-card-text>
-            <p class="ma-0">생년월일: <span class="primary--text">{{ detail.birthDay }}</span></p>
-            <p class="ma-0">사망년월일: <span class="primary--text">{{ detail.lastDay }}</span></p>
-            <p class="ma-0">성별: <span class="primary--text">{{ detail.gender }}</span></p>
-            <p class="ma-0">운동계열: <span class="primary--text">{{ detail.workType }}</span></p>
+            <v-row>
+              <v-col class="pt-0 text-right" cols="4">생년월일:</v-col>
+              <v-col class="pt-0 primary--text" cols="8">{{ detail.birthDay }}</v-col>
+            </v-row>
+            <v-row>
+              <v-col class="pt-0 text-right" cols="4">사망년월일:</v-col>
+              <v-col class="pt-0 primary--text" cols="8">{{ detail.lastDay }}</v-col>
+            </v-row>
+            <v-row>
+              <v-col class="pt-0 text-right" cols="4">성별:</v-col>
+              <v-col class="pt-0 primary--text" cols="8">{{ detail.gender }}</v-col>
+            </v-row>
+            <v-row>
+              <v-col class="pt-0 text-right" cols="4">운동계열:</v-col>
+              <v-col class="pt-0 primary--text" cols="8">{{ detail.workType }}</v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>

@@ -132,7 +132,7 @@
         </v-row>
       </v-card-text>
     </v-card>
-    <v-btn color="primary" @click.prevent="onClick">등록</v-btn>
+    <v-btn :disabled="loading" :loading="loading" color="primary" @click.prevent="onClick">등록</v-btn>
   </v-container>
 </template>
 
@@ -142,7 +142,11 @@
   
   @Component
   export default class Admin extends Vue {
+    loading = false;
     genders = ['남', '여'];
+    sources = [
+      
+    ];
     works = [
       '의병',
       '3.1운동',
@@ -180,10 +184,10 @@
       gender: '남',
       workType: '임시정부',
       imgUrl: '',
-      imgSourceUrl: 'http://e-gonghun.mpva.go.kr',
+      imgSourceUrl: 'https://e-gonghun.mpva.go.kr',
       imgSourceName: '공훈전자사료관',
       achiveContent: '',
-      achiveSourceUrl: 'http://e-gonghun.mpva.go.kr',
+      achiveSourceUrl: 'https://e-gonghun.mpva.go.kr',
       achiveSourceName: '공훈전자사료관',
     };
 
@@ -191,13 +195,17 @@
       const formData = new FormData();
 
       Object.entries(this.form).forEach(l => {
-        formData.append(l[0], l[1]);
+        formData.append(l[0], l[1].trim());
       });
+      
+      this.loading = true;
 
       try {
         await this.$store.dispatch(KoreaConst.$Call.AddData, { key: this.key, form: this.form });
       } catch(e) {
         console.error(e);
+      } finally {
+        this.loading = false;
       }
     }
   }
