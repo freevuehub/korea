@@ -1,0 +1,18 @@
+.test-enter-active, .test-leave-active {
+  transition: opacity .2s;
+}
+.test-enter-to, .test-leave {
+  opacity: 1;
+}
+.test-enter, .test-leave-to {
+  opacity: 0;
+}
+.left-enter-active, .left-leave-active {
+  transition: left .2s;
+}
+.left-enter-to, .left-leave {
+  left: 0;
+}
+.left-enter, .left-leave-to {
+  left: -100%;
+}

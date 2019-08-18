@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors';
 import NuxtConfiguration from '@nuxt/config';
 
 export default {
+  dev: (process.env.NODE_ENV !== 'production'),
   mode: 'spa',
   head: {
     title: 'Freevue - Korea',
@@ -35,6 +36,7 @@ export default {
   },
   loading: { color: '#fff' },
   css: [
+    'assets/main.css'
   ],
   plugins: [
     { src: '~plugins/ga.js', ssr: false }
@@ -49,9 +51,6 @@ export default {
   ],
   axios: {
     proxy: true
-  },
-  proxy: {
-    '/Korea': 'http://e-gonghun.mpva.go.kr/opnAPI/publicReportList.do'
   },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],

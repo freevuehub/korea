@@ -8,23 +8,23 @@
       md4
       sm6
       xs12
-      v-for="l in list"
-      :key="l.no"
+      v-for="(l, idx) in list"
+      :key="l.key"
       class="pa-2"
     >
- <!-- :href="l.url.wiki ? l.url.wiki : ''" target="_blank" -->
-
-      <button @click.prevent="onClick(l.url.wiki)">
+      <button @click.prevent="onClick(l, idx)">
         <v-card
           mx-auto
           outlined
         >
           <v-list-item two-line>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">{{ l.name.kr }}</v-list-item-title>
+              <v-list-item-title class="headline mb-1">
+                {{ l.name }}
+              </v-list-item-title>
               <v-list-item-subtitle>
-                {{ l.date.birth }} ~ <br>
-                {{ l.date.death }}
+                {{ l.birthDay }} ~ <br>
+                {{ l.lastDay }}
               </v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-avatar
@@ -32,7 +32,11 @@
               size="80"
               color="grey lighten-3"
             >
-              <v-img :src="l.url.img ? l.url.img : 'icons/icon-144x144.png'"></v-img>
+              <v-img
+                :src="l.img.url ? l.img.url : 'icons/icon-144x144.png'"
+                lazy-src="icons/icon-144x144.png"
+                contain
+              ></v-img>
             </v-list-item-avatar>
           </v-list-item>
         </v-card>
@@ -44,24 +48,33 @@
 <script lang="ts">
   import { Vue, Component } from 'vue-property-decorator';
   import { mapGetters } from 'vuex';
-  import { MainConst, SystemConst } from '~/Constant';
+  import {
+    KoreaConst,
+    SystemConst
+  } from '~/Constant';
   
   @Component({
     computed: {
       ...mapGetters({
-        list: MainConst.$Get.List
+        list: KoreaConst.$Get.List
       })
     }
   })
   export default class List extends Vue {
-    onClick(url) {
-      if (url) {
-        window.open(url, '_blank');
-      } else {
-        this.$store.dispatch(SystemConst.$Call.Status, {
-          view: true,
-          msg: '죄송합니다. 이분에 대한 정보를 찾지 못했습니다.'
-        })
+    async onClick(data, idx) {
+      await this.$store.dispatch(SystemConst.$Call.Loading, { head: true });
+
+      try {
+        await this.$store.dispatch(KoreaConst.$Call.Idx, {
+          ...data,
+          idx
+        });
+
+        this.$router.push(`/${data.id}/${data.key}`);
+      } catch(e) {
+        console.error(e);
+      } finally {
+        await this.$store.dispatch(SystemConst.$Call.Loading, { head: false });
       }
     }
   }
