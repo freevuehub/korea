@@ -3,15 +3,17 @@
     v-if="detail.name"
   >
     <RouteHeader
+      :notMobile="notMobile"
       :imgUrl="detail.img.url"
-      :imgSourceUrl="detail.img.sourceUrl"
-      :imgSourceName="detail.img.sourceName"
     >
       {{ detail.name }}
     </RouteHeader>
 
     <v-row>
       <v-col cols="12" md="4">
+        <v-card v-if="notMobile">
+          <v-img :src="detail.img.url ? detail.img.url : 'icons/icon-144x144.png'"></v-img>
+        </v-card>
         <v-card>
           <v-card-title class="primary--text">
             상세 정보
@@ -112,6 +114,12 @@
     },
   })
   export default class ItemDetail extends Vue {
+    get notMobile() {
+      const { $vuetify }: any = this;
+
+      return $vuetify.breakpoint.width > 960;
+    };
+
     get achiveDetail() {
       const { detail }: any = this;
 
