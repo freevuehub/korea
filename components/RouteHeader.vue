@@ -5,7 +5,7 @@
     :fade-img-on-scroll="!notMobile"
     :prominent="!notMobile"
     :src="currentImgUrl"
-    lazy-src="icons/icon-144x144.png"
+    lazy-src="/icons/icon-144x144.png"
     dense
     dark
     fixed
@@ -45,7 +45,7 @@
     get currentImgUrl() {
       const { imgUrl }: any = this;
 
-      return imgUrl ? imgUrl : 'icons/icon-144x144.png';
+      return imgUrl ? imgUrl : '/icons/icon-144x144.png';
     };
 
     get batImgHeight() {
