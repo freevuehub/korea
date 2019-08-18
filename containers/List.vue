@@ -19,12 +19,11 @@
         >
           <v-list-item two-line>
             <v-list-item-content>
-              <v-list-item-title class="headline mb-1">
-                {{ l.name }}
+              <v-list-item-title class="headline mb-1 primary--text">
+                {{ l.name }} <span class="body-1 grey--text">({{ l.workType }})</span>
               </v-list-item-title>
               <v-list-item-subtitle>
-                {{ l.birthDay }} ~ <br>
-                {{ l.lastDay }}
+                {{ l.birthDay }} ~ {{ l.lastDay }}
               </v-list-item-subtitle>
             </v-list-item-content>
             <v-list-item-avatar
