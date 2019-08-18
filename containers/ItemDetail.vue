@@ -11,7 +11,7 @@
     </RouteHeader>
 
     <v-row>
-      <v-col cols="12">
+      <v-col cols="12" md="4">
         <v-card>
           <v-card-title class="primary--text">
             상세 정보
@@ -37,7 +37,7 @@
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="12">
+      <v-col cols="12" md="8">
         <v-card>
           <v-card-title class="primary--text">
             주요 활동
