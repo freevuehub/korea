@@ -12,6 +12,7 @@ interface IMainState {
   loading: {
     head: boolean
   }
+  scTop: number
 }
 
 interface IMainModel {
@@ -24,6 +25,7 @@ interface IMainModel {
   loading: {
     head: boolean
   }
+  scTop: number
 }
 
 export const state = (): IMainState => ({
@@ -35,7 +37,8 @@ export const state = (): IMainState => ({
   idx: {},
   loading: {
     head: false
-  }
+  },
+  scTop: 0
 });
 
 export const mutations: MutationTree<IMainState> = {
@@ -60,6 +63,9 @@ export const mutations: MutationTree<IMainState> = {
       ...state.loading,
       ...payload
     };
+  },
+  [SystemConst.$Set.ScTop]: (state, payload) => {
+    state.scTop = payload;
   }
 };
 
@@ -68,6 +74,7 @@ export const getters = {
   [SystemConst.$Get.Status]: ({ snackStatus }) => snackStatus,
   [KoreaConst.$Get.Idx]: ({ idx }) => idx,
   [SystemConst.$Get.Loading]: ({ loading }) => loading,
+  [SystemConst.$Get.ScTop]: ({ scTop }) => scTop,
 };
 
 export const actions: ActionTree<IMainState, IMainModel> = {
@@ -78,6 +85,11 @@ export const actions: ActionTree<IMainState, IMainModel> = {
   }),
   [SystemConst.$Call.Loading]: (store, model) => new Promise(resolve => {
     store.commit(SystemConst.$Set.Loading, model);
+
+    return resolve();
+  }),
+  [SystemConst.$Call.ScTop]: (store, model) => new Promise(resolve => {
+    store.commit(SystemConst.$Set.ScTop, model);
 
     return resolve();
   }),

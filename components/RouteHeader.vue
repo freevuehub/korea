@@ -5,6 +5,7 @@
     :fade-img-on-scroll="!notMobile"
     :prominent="!notMobile"
     :src="currentImgUrl"
+    scroll-target="#app"
     lazy-src="/icons/icon-144x144.png"
     dense
     dark
@@ -14,9 +15,9 @@
     <template v-slot:img="{ props }">
       <v-img
         v-if="!notMobile"
-        ref="barImg"
         v-bind="props"
-        gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+        position="left center"
+        gradient="to left, rgba(19,84,122,.6), rgba(128,208,199,.7)"
       >
       </v-img>
     </template>
@@ -31,50 +32,65 @@
 </template>
 
 <script lang="ts">
-  import { Vue, Component } from 'vue-property-decorator';
+  import { mapGetters } from 'vuex';
+  import { SystemConst } from '~/Constant';
+  import { Vue, Component, Watch } from 'vue-property-decorator';
   
   @Component({
     props: {
       imgUrl: String,
       notMobile: Boolean
+    },
+    computed: {
+      ...mapGetters({
+        scTop: SystemConst.$Get.ScTop
+      })
     }
   })
   export default class RouteHeader extends Vue {
-    barHeight = 0;
+    barHeight: number = 0;
+    natureImgWidth: number = 0;
+    natureImgHeight: number = 0;
 
-    get currentImgUrl() {
+    get innerWidth(): number {
+      const { $vuetify }: any = this;
+      
+      return $vuetify.breakpoint.width;
+    };
+
+    get currentImgUrl(): string {
       const { imgUrl }: any = this;
 
       return imgUrl ? imgUrl : '/icons/icon-144x144.png';
     };
 
-    get batImgHeight() {
-      const { notMobile, currentImgUrl }: any = this;
+    @Watch('innerWidth')
+    onInnerWidthChanged(val: number, oldVal: string) {
+      this.barHeight = (this.natureImgHeight * val) / this.natureImgWidth;
+    }
+    @Watch('scTop')
+    onScTopChanged(val: number, oldVal: string) {
+      const { offsetHeight }: any = document.querySelector('.v-toolbar__content');
 
-      if (notMobile) return '';
-
-      const image = new Image();
-
-      image.src = currentImgUrl;
-
-      image.onload = () => {
-        console.dir(image.naturalHeight);
-        console.dir(image.naturalWidth);
-      }
-      
-      return 500;
+      this.barHeight = Number(offsetHeight);
     }
 
-    created() {
+    _LoadImage(): void {
       const { notMobile, currentImgUrl }: any = this;
       const image = new Image();
 
       image.src = currentImgUrl;
 
       image.onload = () => {
-        console.dir(image.naturalHeight);
-        console.dir(image.naturalWidth);
-      }
-    };// v-toolbar__content
+        this.natureImgWidth =  Number(image.naturalWidth);
+        this.natureImgHeight = Number(image.naturalHeight);
+
+        this.barHeight = (this.natureImgHeight * this.innerWidth) / this.natureImgWidth;
+      } 
+    };
+
+    mounted() {
+      this._LoadImage();
+    };
   }
 </script>

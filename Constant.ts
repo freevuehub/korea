@@ -17,14 +17,17 @@ export const KoreaConst = {
 export const SystemConst = {
   $Set: {
     Status: 'SET/SYSTEM/SNACK/STATUS',
-    Loading: 'SET/SYSTEM/LOADING'
+    Loading: 'SET/SYSTEM/LOADING',
+    ScTop: 'SET/SYSTEM/SCTOLL/TOP'
   },
   $Get: {
     Status: 'GET/SYSTEM/SNACK/STATUS',
-    Loading: 'GET/SYSTEM/LOADING'
+    Loading: 'GET/SYSTEM/LOADING',
+    ScTop: 'GET/SYSTEM/SCTOLL/TOP'
   },
   $Call: {
     Status: 'CALL/SYSTEM/SNACK/STATUS',
-    Loading: 'CALL/SYSTEM/LOADING'
+    Loading: 'CALL/SYSTEM/LOADING',
+    ScTop: 'CALL/SYSTEM/SCTOLL/TOP'
   }
 }
