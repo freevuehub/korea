@@ -6,7 +6,7 @@
     app
   >
     <v-toolbar-title>
-      FreeVue - Korea
+      Korea
       <v-progress-circular
         v-if="loading.head"
         :size="20"
