@@ -85,11 +85,22 @@ export const actions: ActionTree<IMainState, IMainModel> = {
     if (!!store.state.list.length) return resolve();
 
     try {
-      const { data } = await getNewList('PSG00002');
+      const all = await Promise.all([
+        getNewList('PSG00002'),
+        getNewList('PSG00003')
+      ]);
       
-      store.commit(KoreaConst.$Set.List, data.list);
+      store.commit(
+        KoreaConst.$Set.List,
+        all.reduce(
+          (p, { data }) => [
+            ...p,
+            ...data.list
+          ], []
+        )
+      );
 
-      return resolve(data);
+      return resolve(all);
     } catch(e) {
       console.error('===== KoreaConst.$Call.List Error =====');
       
