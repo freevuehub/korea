@@ -1,7 +1,6 @@
 <template>
   <v-container
     v-if="detail.name"
-    @scroll="onScroll"
   >
     <RouteHeader
       :imgUrl="detail.img.url"
