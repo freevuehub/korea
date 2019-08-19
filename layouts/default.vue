@@ -1,6 +1,6 @@
 <template>
-  <v-app :class="$style.app" id="app">
-    <v-content v-scroll:#app="onScroll">
+  <v-app>
+    <v-content>
       <nuxt />
     </v-content>
     <SnackBar />
@@ -8,7 +8,6 @@
 </template>
 
 <script lang="ts">
-  import { SystemConst } from '~/Constant';
   import { SnackBar } from '~/containers';
   import { Vue, Component } from 'vue-property-decorator';
 
@@ -17,20 +16,8 @@
       SnackBar
     }
   })
-  export default class DefaultLayout extends Vue {
-    onScroll($e) {
-      this.$store.dispatch(SystemConst.$Call.ScTop, $e.target.scrollTop);
-    }
-  }
+  export default class DefaultLayout extends Vue {}
 </script>
-
-<style module>
-  .app {
-    height: 100vh;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
-</style>
 
 <style>
  a {

@@ -3,7 +3,6 @@
     v-if="detail.name"
   >
     <RouteHeader
-      :notMobile="notMobile"
       :imgUrl="detail.img.url"
     >
       {{ detail.name }}
@@ -11,7 +10,7 @@
 
     <v-row>
       <v-col cols="12" md="4">
-        <v-card v-if="notMobile">
+        <v-card>
           <v-img :src="detail.img.url ? detail.img.url : '/icons/icon-144x144.png'"></v-img>
         </v-card>
         <v-card>
@@ -101,7 +100,7 @@
   interface IGetter {
     detail: {}
   }
-  
+
   @Component({
     transition: 'test',
     components: {
