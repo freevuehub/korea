@@ -69,7 +69,7 @@
           idx
         });
 
-        this.$router.push(`/${data.id}/${data.key}`);
+        this.$router.push(`/${data.key}`);
       } catch(e) {
         console.error(e);
       } finally {

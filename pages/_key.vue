@@ -19,7 +19,6 @@
     async created() {
       try {
         await this.$store.dispatch(KoreaConst.$Call.Idx, {
-          id: this.$route.params.id,
           key: this.$route.params.key
         });
       } catch(e) {

@@ -1,4 +1,4 @@
-import { getIdx, getNewList, addData } from '~/API';
+import { getList, addData, getKey } from '~/API';
 import { KoreaConst, SystemConst } from '~/Constant';
 import { ActionTree, MutationTree } from 'vuex'
 
@@ -97,22 +97,14 @@ export const actions: ActionTree<IMainState, IMainModel> = {
     if (!!store.state.list.length) return resolve();
 
     try {
-      const all = await Promise.all([
-        getNewList('PSG00002'),
-        getNewList('PSG00003')
-      ]);
+      const { data }: any = await getList();
       
       store.commit(
         KoreaConst.$Set.List,
-        all.reduce(
-          (p, { data }) => [
-            ...p,
-            ...data.list
-          ], []
-        )
+        data.list
       );
 
-      return resolve(all);
+      return resolve(data);
     } catch(e) {
       console.error('===== KoreaConst.$Call.List Error =====');
       
@@ -130,13 +122,13 @@ export const actions: ActionTree<IMainState, IMainModel> = {
       return reject(e);
     }
   }),
-  [KoreaConst.$Call.Idx]: (store, model) => new Promise(async (resolve, reject) => {
+  [KoreaConst.$Call.Idx]: (store, { key }) => new Promise(async (resolve, reject) => {
     try {
-      const { data } = await getIdx(model.id, model.key);
+      const { data }: any = await getKey(key);
       
       store.commit(KoreaConst.$Set.Idx, data.item);
 
-      return resolve();
+      return resolve(data);
     } catch(e) {
       console.error('===== KoreaConst.$Call.Idx =====');
 
