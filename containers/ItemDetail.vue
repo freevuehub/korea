@@ -23,24 +23,20 @@
             상세 정보
           </v-card-title>
           <v-divider></v-divider>
-          <v-card-text>
-            <v-row>
-              <v-col class="pt-0 text-right" cols="5" sm="4">생년월일:</v-col>
-              <v-col class="pt-0 primary--text" cols="7" sm="8">{{ detail.birthDay }}</v-col>
-            </v-row>
-            <v-row>
-              <v-col class="pt-0 text-right" cols="5" sm="4">사망년월일:</v-col>
-              <v-col class="pt-0 primary--text" cols="7" sm="8">{{ detail.lastDay }}</v-col>
-            </v-row>
-            <v-row>
-              <v-col class="pt-0 text-right" cols="5" sm="4">성별:</v-col>
-              <v-col class="pt-0 primary--text" cols="7" sm="8">{{ detail.gender }}</v-col>
-            </v-row>
-            <v-row>
-              <v-col class="pt-0 text-right" cols="5" sm="4">운동계열:</v-col>
-              <v-col class="pt-0 primary--text" cols="7" sm="8">{{ detail.workType }}</v-col>
-            </v-row>
-          </v-card-text>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-content>생년월일:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">{{ detail.birthDay }}</v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>사망년월일:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">{{ detail.lastDay }}</v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>운동계열:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">{{ detail.workType }}</v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-card>
       </v-col>
       <v-col cols="12" md="8">
@@ -59,35 +55,53 @@
       <v-col cols="12">
         <v-card>
           <v-card-title class="primary--text">
-            출처
+            데이터 내용
           </v-card-title>
           <v-divider></v-divider>
-          <v-card-text>
-            <p class="ma-0">
-              내용:
-              <v-btn
-                color="primary"
-                class="ma-0"
-                :href="detail.achive.sourceUrl"
-                text
-                target="_blank"
-              >
-                {{ detail.achive.sourceName }}
-              </v-btn>
-            </p>
-            <p class="ma-0">
-              사진:
-              <v-btn
-                color="primary"
-                class="ma-0"
-                :href="detail.img.sourceUrl"
-                text
-                target="_blank"
-              >
-                {{ detail.img.sourceName }}
-              </v-btn>
-            </p>
-          </v-card-text>
+          <v-list dense>
+            <v-list-item>
+              <v-list-item-content>활동 내용 출처:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">
+                <v-btn
+                  color="primary"
+                  class="ma-0"
+                  :href="detail.achive.sourceUrl"
+                  text
+                  small
+                  target="_blank"
+                >
+                  {{ detail.achive.sourceName }}
+                </v-btn>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>사진 출처:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">
+                <v-btn
+                  color="primary"
+                  class="ma-0"
+                  :href="detail.img.sourceUrl"
+                  text
+                  small
+                  target="_blank"
+                >
+                  {{ detail.img.sourceName }}
+                </v-btn>
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>최초 등록일:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">
+                {{ detail.createdDate }}
+              </v-list-item-content>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-content>최종 수정일:</v-list-item-content>
+              <v-list-item-content class="align-end primary--text">
+                {{ detail.updatedDate }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
         </v-card>
       </v-col>
     </v-row>
