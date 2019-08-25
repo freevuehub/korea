@@ -5,7 +5,8 @@
     fixed
     app
   >
-    <v-toolbar-title>
+    <v-app-bar-nav-icon @click="onMenuClick"></v-app-bar-nav-icon>
+    <v-toolbar-title class="pa-0">
       Korea
       <v-progress-circular
         v-if="loading.head"
@@ -45,6 +46,8 @@
     }
   })
   export default class MainHeader extends Vue {
-    
+    onMenuClick() {
+      this.$store.dispatch(SystemConst.$Call.Status, { view: true, msg: '준비중입니다.' });
+    }
   }
 </script>

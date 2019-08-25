@@ -1,5 +1,9 @@
 <template>
-  <header>
+  <header
+    :class="[$style.imgHeader, 'primary', 'v-app-bar', 'v-app-bar--fixed']"
+    color="primary"
+  >
+    <slot></slot>
     <img :src="img" alt="">
   </header>
 </template>
@@ -18,3 +22,13 @@
     }
   }
 </script>
+
+<style module>
+  .imgHeader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 56px;
+  }
+</style>

@@ -7,7 +7,12 @@
     >
       {{ detail.name }}
     </RouteHeader>
-
+    <ImageHeader
+      v-if="false"
+      :img="detail.img.url"
+    >
+      {{ detail.name }}
+    </ImageHeader>
     <v-row>
       <v-col cols="12" md="4">
         <v-card>
@@ -94,6 +99,7 @@
   import { KoreaConst } from '~/Constant';
   import { mapGetters } from 'vuex';
   import {
+    ImageHeader,
     RouteHeader
   } from '~/components';
 
@@ -104,6 +110,7 @@
   @Component({
     transition: 'test',
     components: {
+      ImageHeader,
       RouteHeader
     },
     computed: {

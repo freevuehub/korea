@@ -9,7 +9,7 @@
       text
       @click="onClick"
     >
-      Close
+      닫기
     </v-btn>
   </v-snackbar>
 </template>
