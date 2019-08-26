@@ -3,7 +3,10 @@
     :class="[$style.imgHeader, 'primary', 'v-app-bar', 'v-app-bar--fixed']"
     color="primary"
   >
-    <slot></slot>
+    
+    <div>
+      <slot></slot>
+    </div>
     <img :src="img" alt="">
   </header>
 </template>
