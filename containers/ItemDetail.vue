@@ -8,7 +8,7 @@
       {{ detail.name }}
     </RouteHeader>
     <ImageHeader
-      v-if="false"
+      v-show="false"
       :img="detail.img.url"
     >
       {{ detail.name }}
