@@ -134,13 +134,13 @@
     },
   })
   export default class ItemDetail extends Vue {
-    get notMobile() {
+    get notMobile(): boolean {
       const { $vuetify }: any = this;
 
       return $vuetify.breakpoint.width > 960;
     };
 
-    get achiveDetail() {
+    get achiveDetail(): [] {
       const { detail }: any = this;
 
       return detail.achive.contents.split('\n').filter(l => !!l);

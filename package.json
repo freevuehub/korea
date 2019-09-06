@@ -5,7 +5,7 @@
   "author": "홍성준",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt && set NODE_ENV=develop",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
