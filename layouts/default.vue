@@ -1,5 +1,10 @@
 <template>
   <v-app dark>
+    <v-app-bar color="primary" dense dark app fixes>
+      <v-app-bar-nav-icon />
+      <v-spacer />
+      <v-toolbar-title v-text="'기억하겠습니다.'" />
+    </v-app-bar>
     <v-main>
       <nuxt />
     </v-main>

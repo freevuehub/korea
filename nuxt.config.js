@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import { ko } from 'vuetify/src/locale'
 
 export default {
   /*
@@ -71,6 +72,10 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    lang: {
+      locales: { ko },
+      current: 'ko',
+    },
     theme: {
       dark: true,
       themes: {
@@ -91,4 +96,8 @@ export default {
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  env: {
+    API_PROTOCOL: process.env.API_PROTOCOL,
+    API_URL: process.env.API_URL,
+  },
 }
