@@ -6,6 +6,7 @@ interface IConfig {
   person: {
     request: {
       list(): string
+      item(id: number): string
     }
   }
 }
@@ -14,6 +15,7 @@ const config: IConfig = {
   person: {
     request: {
       list: () => `${SERVER}/person`,
+      item: (id) => `${SERVER}/person/${id}`,
     },
   },
 }

@@ -27,13 +27,14 @@ export default {
         name: 'description',
         content: process.env.npm_package_description || '',
       },
+      { name: 'theme-color', content: '#71abbd' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['material-design-icons-iconfont/dist/material-design-icons.css'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

@@ -26,3 +26,18 @@ export const getPersonList = (page: number, limit: number): Promise<IPerconListR
       reject(err)
     }
   })
+
+export const getPersonItem = (id: number): Promise<IPerconListResponse> =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const response = await axios.get(endpoint.person.request.item(id))
+
+      if (response.data.status === 2000) {
+        resolve(response.data)
+      } else {
+        reject(response)
+      }
+    } catch (err) {
+      reject(err)
+    }
+  })

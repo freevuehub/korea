@@ -1,6 +1,12 @@
 <template>
   <v-container>
-    <v-card class="mb-3" v-for="person in computed.personList" :key="person.id">
+    <v-card
+      class="mb-3"
+      v-for="person in computed.personList"
+      nuxt
+      :to="`/person/${person.id}`"
+      :key="person.id"
+    >
       <v-card-text>
         <v-avatar>
           <img :src="person.imgUrl" :alt="person.name" />
