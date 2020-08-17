@@ -1,0 +1,40 @@
+stages:
+  - Setting
+  - Build
+  - Deploy
+
+Docker Remove Container:
+  stage: Setting
+  image: docker:latest
+  script:
+    - docker stop Korea-Front
+    - docker rm Korea-Front
+  only:
+    - tags
+
+Docker Delete Image:
+  stage: Setting
+  image: docker:latest
+  script:
+    - docker rmi `docker images | awk '$1 ~ /korea\/front/ {print $3}'`
+  only:
+    - tags
+
+Docker Build Image:
+  stage: Build
+  image: docker:latest
+  before_script:
+    - cd /volumn1/docker/Korea-Front
+    - git pull origin master
+  script:
+    - docker bulid --tag korea/front
+  only:
+    - tags
+
+Docker Run Container:
+  stage: Deploy
+  image: docker:latest
+  script:
+    - docker run -d --name=Korea-Front --restart=always -p 19932:3000 korea/front:latest
+  only:
+    - tags
