@@ -1,10 +1,23 @@
 import { SetupContext, reactive, computed } from '@vue/composition-api'
+import dayjs from 'dayjs'
 import { PersonConst } from '~/Constant'
+
+export const useState = () =>
+  reactive({
+    tab: 0,
+  })
 
 export const useComputed = (context: SetupContext) =>
   reactive({
     detail: computed(() => {
-      return context.root.$store.getters[`person/${PersonConst.$Get.Item}`]
+      const item = context.root.$store.getters[`person/${PersonConst.$Get.Item}`]
+
+      return {
+        ...item,
+        birthDay: dayjs(item.birthDay).format('YYYY-MM-DD'),
+        deathDay: dayjs(item.deathDay).format('YYYY-MM-DD'),
+        judgeYear: dayjs(item.judgeYear).format('YYYY'),
+      }
     }),
   })
 

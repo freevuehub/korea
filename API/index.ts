@@ -11,33 +11,37 @@ interface IPerconListResponse extends IApiSuccessCode {
 }
 
 export const getPersonList = (page: number, limit: number): Promise<IPerconListResponse> =>
-  new Promise(async (resolve, reject) => {
-    try {
-      const params = { page, limit }
+  new Promise((resolve, reject) => {
+    ;(async () => {
+      try {
+        const params = { page, limit }
 
-      const response = await axios.get(endpoint.person.request.list(), { params })
+        const response = await axios.get(endpoint.person.request.list(), { params })
 
-      if (response.data.status === 2000) {
-        resolve(response.data)
-      } else {
-        reject(response)
+        if (response.data.status === 2000) {
+          resolve(response.data)
+        } else {
+          reject(response)
+        }
+      } catch (err) {
+        reject(err)
       }
-    } catch (err) {
-      reject(err)
-    }
+    })()
   })
 
 export const getPersonItem = (id: number): Promise<IPerconListResponse> =>
-  new Promise(async (resolve, reject) => {
-    try {
-      const response = await axios.get(endpoint.person.request.item(id))
+  new Promise((resolve, reject) => {
+    ;(async () => {
+      try {
+        const response = await axios.get(endpoint.person.request.item(id))
 
-      if (response.data.status === 2000) {
-        resolve(response.data)
-      } else {
-        reject(response)
+        if (response.data.status === 2000) {
+          resolve(response.data)
+        } else {
+          reject(response)
+        }
+      } catch (err) {
+        reject(err)
       }
-    } catch (err) {
-      reject(err)
-    }
+    })()
   })

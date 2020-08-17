@@ -1,5 +1,6 @@
 import { PersonConst } from '~/Constant'
 import { getPersonList, getPersonItem } from '~/API'
+import { IPersonItem, IPersonListPageData } from '~/types'
 
 interface IPersonDetail {
   achivement: string
@@ -15,7 +16,7 @@ interface IPersonDetail {
 
 interface IState {
   personDetail: IPersonDetail
-  personList: any[]
+  personList: IPersonItem[]
   listTotal: number
 }
 
@@ -42,14 +43,18 @@ export const mutations = {
   [PersonConst.$Get.Item]: (state: IState, payload: IPersonDetail) => {
     state.personDetail = payload
   },
+  [PersonConst.$Set.Total]: (state: IState, payload: number) => {
+    state.listTotal = payload
+  },
 }
 
 export const actions = {
-  [PersonConst.$Call.List]: async (store: any) => {
+  [PersonConst.$Call.List]: async (store: any, { page, limit }: IPersonListPageData) => {
     try {
-      const response = await getPersonList(1, 2)
+      const response = await getPersonList(page, limit)
 
       store.commit(PersonConst.$Set.List, response.result)
+      store.commit(PersonConst.$Set.Total, response.totalCount)
 
       return response
     } catch (err) {
@@ -75,5 +80,8 @@ export const getters = {
   },
   [PersonConst.$Get.Item](state: IState) {
     return state.personDetail
+  },
+  [PersonConst.$Get.Total](state: IState) {
+    return state.listTotal
   },
 }

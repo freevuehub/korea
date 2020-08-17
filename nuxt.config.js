@@ -71,6 +71,23 @@ export default {
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
    */
+  manifest: {
+    name: '출!사표',
+    short_name: '출!사표',
+    start_url: '/?utm_source=homescreen',
+    display: 'standalone',
+    background_color: '#ffffff',
+  },
+  workbox: {
+    offline: false,
+    runtimeCaching: [
+      {
+        urlPattern: '/*',
+        handler: 'networkFirst',
+        method: 'GET',
+      },
+    ],
+  },
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     lang: {

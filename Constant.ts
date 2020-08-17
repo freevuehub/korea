@@ -2,6 +2,7 @@ export const PersonConst = {
   $Set: {
     List: 'SET/LIST',
     Item: 'SET/ITEM',
+    Total: 'SET/TOTAL',
   },
   $Call: {
     List: 'CALL/LIST',
@@ -10,5 +11,6 @@ export const PersonConst = {
   $Get: {
     List: 'GET/LIST',
     Item: 'GET/ITEM',
+    Total: 'GET/TOTAL',
   },
 }

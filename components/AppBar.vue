@@ -1,5 +1,8 @@
 <template>
   <v-app-bar color="primary" dense dark app fixes>
+    <v-btn v-if="$route.params.id" icon @click.prevent="$router.go(-1)">
+      <v-icon>arrow_back_ios</v-icon>
+    </v-btn>
     <v-app-bar-nav-icon @click.stop="$emit('change', !drawer)" />
     <v-spacer />
     <v-toolbar-title v-text="state.title" />
