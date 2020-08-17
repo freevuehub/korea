@@ -24,7 +24,7 @@ Docker Build Image:
   stage: Build
   image: docker:latest
   before_script:
-    - cd /volumn1/docker/Korea-Front
+    - cd /volume1/docker/Korea-Front
     - git pull origin master
   script:
     - docker bulid --tag korea/front
