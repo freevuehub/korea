@@ -1,18 +1,6 @@
 import { PersonConst } from '~/Constant'
-import { getPersonList, getPersonItem } from '~/API'
-import { IPersonItem, IPersonListPageData } from '~/types'
-
-interface IPersonDetail {
-  achivement: string
-  birthDay: string
-  deathDay: string
-  gender: number
-  hunkuk: string
-  id: number
-  imgUrl: string
-  name: string
-  work: string
-}
+import { getPersonList, getPersonItem, putPersonClickCount } from '~/API'
+import { IPersonItem, IPersonListPageData, IPersonDetail } from '~/types'
 
 interface IState {
   personDetail: IPersonDetail
@@ -20,7 +8,7 @@ interface IState {
   listTotal: number
 }
 
-export const state = () => ({
+export const state = (): IState => ({
   personDetail: {
     achivement: '',
     birthDay: '',
@@ -28,9 +16,14 @@ export const state = () => ({
     gender: 0,
     hunkuk: '',
     id: 0,
+    clickCount: 0,
     imgUrl: '',
     name: '',
     work: '',
+    diffName: '',
+    judgeYear: '',
+    registerLarge: '',
+    registerMid: '',
   },
   personList: [],
   listTotal: 0,
@@ -64,6 +57,10 @@ export const actions = {
   [PersonConst.$Call.Item]: async (store: any, id: number) => {
     try {
       const response = await getPersonItem(id)
+
+      const count = response.result.clickCount + 1
+
+      await putPersonClickCount(id, count)
 
       store.commit(PersonConst.$Get.Item, response.result)
 

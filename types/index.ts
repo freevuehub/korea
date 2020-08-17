@@ -1,13 +1,21 @@
 export interface IPersonItem {
-  achivement: string
-  birthDay: string
+  achivement: string | null
+  birthDay: string | null
   deathDay: string
   gender: number
   hunkuk: string
   id: number
-  imgUrl: string
+  imgUrl: string | null
   name: string
   work: string
+  clickCount: number
+}
+
+export interface IPersonDetail extends IPersonItem {
+  diffName: string | null
+  judgeYear: string
+  registerLarge: string | null
+  registerMid: string | null
 }
 
 export interface IPersonListPageData {
