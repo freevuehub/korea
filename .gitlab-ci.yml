@@ -27,7 +27,7 @@ Docker Build Image:
     - cd /volume1/docker/Korea-Front
     - git pull origin master
   script:
-    - docker build --tag korea/front
+    - docker build --tag korea/front .
   only:
     - tags
 
