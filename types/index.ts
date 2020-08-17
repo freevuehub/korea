@@ -1,7 +1,7 @@
 export interface IPersonItem {
   achivement: string | null
-  birthDay: string | null
-  deathDay: string
+  birthDay: string
+  deathDay: string | null
   gender: number
   hunkuk: string
   id: number

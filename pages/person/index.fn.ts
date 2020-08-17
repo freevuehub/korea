@@ -21,7 +21,7 @@ export const useComputed = (context: SetupContext) =>
       return list.map((person: IPersonItem) => ({
         ...person,
         birthDay: dayjs(person.birthDay).format('YYYY-MM-DD'),
-        deathDay: dayjs(person.deathDay).format('YYYY-MM-DD'),
+        deathDay: person.deathDay && dayjs(person.deathDay).format('YYYY-MM-DD'),
       }))
     }),
     total: computed(() => {

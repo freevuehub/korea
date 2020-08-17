@@ -39,7 +39,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/composition-api', '~/plugins/dayjs'],
+  plugins: [
+    '~/plugins/composition-api',
+    '~/plugins/dayjs',
+    { src: '~/plugins/ga.js', mode: 'client' },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -61,6 +65,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    ['@nuxtjs/google-analytics', { id: 'UA-138408307-3' }],
   ],
   /*
    ** Axios module configuration
