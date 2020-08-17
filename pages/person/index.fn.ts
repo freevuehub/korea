@@ -30,11 +30,7 @@ export const useComputed = (context: SetupContext) =>
   })
 
 export const useBeforeMount = (context: SetupContext, state: IPersonListPageData) => async () => {
-  try {
-    await loadList(context, state)
-  } catch (err) {
-    console.error(err)
-  }
+  await loadList(context, state)
 }
 
 export const usePageWatch = (context: SetupContext, state: IPersonListPageData) => async (

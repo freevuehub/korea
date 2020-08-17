@@ -8,7 +8,7 @@
     <v-tabs-items v-model="state.tab" class="tab-item-area">
       <v-tab-item :value="0" eager>
         <v-card class="mb-3">
-          <v-img class="align-end" :src="computed.detail.imgUrl" />
+          <v-img class="align-end" :src="computed.detail.imgUrl || '/icon.png'" />
         </v-card>
 
         <h1 class="mb-2">기본 정보</h1>

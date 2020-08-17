@@ -113,7 +113,17 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
+      })
+    },
+  },
   env: {
     API_PROTOCOL: process.env.API_PROTOCOL,
     API_URL: process.env.API_URL,
