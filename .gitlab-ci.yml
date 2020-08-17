@@ -35,6 +35,6 @@ Docker Run Container:
   stage: Deploy
   image: docker:latest
   script:
-    - docker run -d --name=Korea-Front --restart=always -p 19932:3000 korea/front:latest
+    - docker run -d --name=Korea-Front --restart=always -p 19934:3000 korea/front:latest
   only:
     - tags
