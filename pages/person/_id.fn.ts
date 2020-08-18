@@ -1,6 +1,17 @@
-import { SetupContext, reactive, computed } from '@vue/composition-api'
+import { SetupContext, reactive, computed, ComputedRef } from '@vue/composition-api'
 import dayjs from 'dayjs'
-import { PersonConst } from '~/Constant'
+import { PersonConst, SourceConst } from '~/Constant'
+import { IPersonDetail, ISourceDetail } from '~/types'
+
+interface IComputed {
+  detail: IPersonDetail
+  source: ISourceDetail
+}
+
+interface IComputedRef {
+  detail: ComputedRef<IPersonDetail>
+  source: ComputedRef<ISourceDetail>
+}
 
 export const useState = () =>
   reactive({
@@ -8,7 +19,7 @@ export const useState = () =>
   })
 
 export const useComputed = (context: SetupContext) =>
-  reactive({
+  reactive<IComputedRef>({
     detail: computed(() => {
       const item = context.root.$store.getters[`person/${PersonConst.$Get.Item}`]
 
@@ -19,6 +30,11 @@ export const useComputed = (context: SetupContext) =>
         judgeYear: dayjs(item.judgeYear).format('YYYY'),
       }
     }),
+    source: computed(() => {
+      const item = context.root.$store.getters[`source/${SourceConst.$Get.Item}`]
+
+      return item
+    }),
   })
 
 export const useBeforeMount = (context: SetupContext) => async () => {
@@ -26,6 +42,17 @@ export const useBeforeMount = (context: SetupContext) => async () => {
     const { $store, $route } = context.root
 
     await $store.dispatch(`person/${PersonConst.$Call.Item}`, Number($route.params.id))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const useDetailWatch = (context: SetupContext, computed: IComputed) => async () => {
+  try {
+    const { $store } = context.root
+    const { imgSourceId, achivementSourceId } = computed.detail
+
+    await $store.dispatch(`source/${SourceConst.$Call.Item}`, { imgSourceId, achivementSourceId })
   } catch (err) {
     console.error(err)
   }

@@ -14,3 +14,14 @@ export const PersonConst = {
     Total: 'GET/TOTAL',
   },
 }
+export const SourceConst = {
+  $Set: {
+    Item: 'SET/ITEM',
+  },
+  $Call: {
+    Item: 'CALL/ITEM',
+  },
+  $Get: {
+    Item: 'GET/ITEM',
+  },
+}

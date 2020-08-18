@@ -9,6 +9,11 @@ interface IConfig {
       item(id: number): string
     }
   }
+  source: {
+    request: {
+      item(id: number): string
+    }
+  }
 }
 
 const config: IConfig = {
@@ -16,6 +21,11 @@ const config: IConfig = {
     request: {
       list: () => `${SERVER}/person`,
       item: (id) => `${SERVER}/person/${id}`,
+    },
+  },
+  source: {
+    request: {
+      item: (id) => `${SERVER}/source/${id}`,
     },
   },
 }

@@ -16,9 +16,22 @@ export interface IPersonDetail extends IPersonItem {
   judgeYear: string
   registerLarge: string | null
   registerMid: string | null
+  imgSourceId: number
+  achivementSourceId: number
 }
 
 export interface IPersonListPageData {
   page: number
   limit: number
+}
+
+export interface ISourceDetailItem {
+  id: number
+  name: string
+  url: string
+}
+
+export interface ISourceDetail {
+  imgSource: ISourceDetailItem
+  achivementSource: ISourceDetailItem
 }

@@ -24,6 +24,8 @@ export const state = (): IState => ({
     judgeYear: '',
     registerLarge: '',
     registerMid: '',
+    imgSourceId: 0,
+    achivementSourceId: 0,
   },
   personList: [],
   listTotal: 0,
@@ -33,7 +35,7 @@ export const mutations = {
   [PersonConst.$Set.List]: (state: IState, payload: any) => {
     state.personList = payload
   },
-  [PersonConst.$Get.Item]: (state: IState, payload: IPersonDetail) => {
+  [PersonConst.$Set.Item]: (state: IState, payload: IPersonDetail) => {
     state.personDetail = payload
   },
   [PersonConst.$Set.Total]: (state: IState, payload: number) => {
@@ -62,7 +64,7 @@ export const actions = {
 
       await putPersonClickCount(id, count)
 
-      store.commit(PersonConst.$Get.Item, response.result)
+      store.commit(PersonConst.$Set.Item, response.result)
 
       return response
     } catch (err) {
