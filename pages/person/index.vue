@@ -15,7 +15,7 @@
         </v-list-item-content>
 
         <v-list-item-avatar tile size="80" color="grey">
-          <img :src="person.imgUrl" :alt="person.name" />
+          <img :src="person.imgUrl || './noneImg.png'" :alt="person.name" />
         </v-list-item-avatar>
       </v-list-item>
     </v-card>
