@@ -20,7 +20,7 @@ export const useComputed = (context: SetupContext) =>
 
       return list.map((person: IPersonItem) => ({
         ...person,
-        birthDay: person.deathDay ? dayjs(person.birthDay).format(person.birthDayFormat) : '미상',
+        birthDay: person.birthDay ? dayjs(person.birthDay).format(person.birthDayFormat) : '미상',
         deathDay: person.deathDay ? dayjs(person.deathDay).format(person.deathDayFormat) : '미상',
       }))
     }),

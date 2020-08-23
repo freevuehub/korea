@@ -25,8 +25,8 @@ export const useComputed = (context: SetupContext) =>
 
       return {
         ...item,
-        birthDay: dayjs(item.birthDay).format('YYYY-MM-DD'),
-        deathDay: dayjs(item.deathDay).format('YYYY-MM-DD'),
+        birthDay: item.birthDay ? dayjs(item.birthDay).format(item.birthDayFormat) : '미상',
+        deathDay: item.deathDay ? dayjs(item.deathDay).format(item.deathDayFormat) : '미상',
         judgeYear: dayjs(item.judgeYear).format('YYYY'),
       }
     }),
