@@ -24,6 +24,8 @@ export const state = (): IState => ({
     judgeYear: '',
     registerLarge: '',
     registerMid: '',
+    birthDayFormat: '',
+    deathDayFormat: '',
     imgSourceId: 0,
     achivementSourceId: 0,
   },
