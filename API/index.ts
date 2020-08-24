@@ -6,6 +6,10 @@ interface IApiSuccessCode {
   status: number
 }
 
+interface IMainItemResponse extends IApiSuccessCode {
+  todayAddPerson: IPersonItem[]
+}
+
 interface IPersonListResponse extends IApiSuccessCode {
   result: IPersonItem[]
   totalCount: number
@@ -18,6 +22,23 @@ interface IPersonItemResponse extends IApiSuccessCode {
 interface ISourceItemResponse extends IApiSuccessCode {
   result: ISourceDetail
 }
+
+export const getMainData = (): Promise<IMainItemResponse> =>
+  new Promise((resolve, reject) => {
+    ;(async () => {
+      try {
+        const response = await axios.get(endpoint.main.request.item())
+
+        if (response.data.status === 2000) {
+          resolve(response.data)
+        } else {
+          reject(response)
+        }
+      } catch (err) {
+        reject(err)
+      }
+    })()
+  })
 
 export const getPersonList = (page: number, limit: number): Promise<IPersonListResponse> =>
   new Promise((resolve, reject) => {

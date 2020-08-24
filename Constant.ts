@@ -1,3 +1,15 @@
+export const MainConst = {
+  $Set: {
+    Item: 'SET/ITEM',
+  },
+  $Call: {
+    Item: 'CALL/ITEM',
+  },
+  $Get: {
+    TodayAddPerson: 'GET/ADD/LIST',
+  },
+}
+
 export const PersonConst = {
   $Set: {
     List: 'SET/LIST',
@@ -14,6 +26,7 @@ export const PersonConst = {
     Total: 'GET/TOTAL',
   },
 }
+
 export const SourceConst = {
   $Set: {
     Item: 'SET/ITEM',

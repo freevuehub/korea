@@ -3,6 +3,11 @@ const URL = process.env.API_URL
 const SERVER = `${PTOTOCOL}${URL}`
 
 interface IConfig {
+  main: {
+    request: {
+      item(): string
+    }
+  }
   person: {
     request: {
       list(): string
@@ -17,6 +22,11 @@ interface IConfig {
 }
 
 const config: IConfig = {
+  main: {
+    request: {
+      item: () => `${SERVER}/main`,
+    },
+  },
   person: {
     request: {
       list: () => `${SERVER}/person`,
