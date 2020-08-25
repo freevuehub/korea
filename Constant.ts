@@ -7,6 +7,7 @@ export const MainConst = {
   },
   $Get: {
     TodayAddPerson: 'GET/ADD/LIST',
+    TodayPerson: 'GET/TODAY/PERSON',
   },
 }
 

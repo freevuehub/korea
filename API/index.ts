@@ -8,6 +8,7 @@ interface IApiSuccessCode {
 
 interface IMainItemResponse extends IApiSuccessCode {
   todayAddPerson: IPersonItem[]
+  todayPerson: IPersonDetail
 }
 
 interface IPersonListResponse extends IApiSuccessCode {

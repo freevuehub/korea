@@ -14,6 +14,13 @@ export const useComputed = (context: SetupContext) =>
         deathDay: item.deathDay ? dayjs(item.deathDay).format(item.deathDayFormat) : '미상',
       }))
     }),
+    todayPerson: computed(() => {
+      const personDetail = context.root.$store.getters[`main/${MainConst.$Get.TodayPerson}`]
+
+      console.log(personDetail)
+
+      return personDetail
+    }),
   })
 
 export const useMounted = (context: SetupContext) => () => {

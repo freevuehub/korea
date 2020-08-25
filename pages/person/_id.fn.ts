@@ -21,7 +21,7 @@ export const useState = () =>
 export const useComputed = (context: SetupContext) =>
   reactive<IComputedRef>({
     detail: computed(() => {
-      const item = context.root.$store.getters[`person/${PersonConst.$Get.Item}`]
+      const item: IPersonDetail = context.root.$store.getters[`person/${PersonConst.$Get.Item}`]
 
       return {
         ...item,
