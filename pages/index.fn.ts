@@ -31,6 +31,7 @@ export const useComputed = (context: SetupContext) =>
         deathDay: personDetail.deathDay
           ? dayjs(personDetail.deathDay).format(personDetail.deathDayFormat)
           : '미상',
+        judgeYear: dayjs(personDetail.judgeYear).format('YYYY'),
       }
     }),
   })

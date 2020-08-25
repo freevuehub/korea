@@ -8,19 +8,40 @@
       <v-card-subtitle>
         <span>{{ computed.todayPerson.work }} / {{ computed.todayPerson.hunkuk }}</span>
       </v-card-subtitle>
+      <v-list class="transparent pa-0">
+        <v-list-item>
+          <v-list-item-title>생년월일</v-list-item-title>
+          <v-list-item-subtitle class="text-right">
+            <span>{{ computed.todayPerson.birthDay }}</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+      </v-list>
+      <v-list class="transparent pa-0">
+        <v-list-item>
+          <v-list-item-title>사망년월일</v-list-item-title>
+          <v-list-item-subtitle class="text-right">
+            <span>{{ computed.todayPerson.deathDay }}</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+      </v-list>
+      <v-list class="transparent pa-0">
+        <v-list-item>
+          <v-list-item-title>포상연도</v-list-item-title>
+          <v-list-item-subtitle class="text-right">
+            <span>{{ computed.todayPerson.judgeYear }}</span>
+          </v-list-item-subtitle>
+        </v-list-item>
+      </v-list>
       <v-card-actions>
-        <v-btn color="primary" text :to="`/person/${computed.todayPerson.id}`">상세보기</v-btn>
         <v-spacer></v-spacer>
-        <v-btn icon @click="state.achivementShow = !state.achivementShow">
-          <v-icon>{{ state.achivementShow ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-        </v-btn>
+        <v-btn color="primary" text :to="`/person/${computed.todayPerson.id}`">상세보기</v-btn>
       </v-card-actions>
-      <v-expand-transition>
+      <!-- <v-expand-transition>
         <div v-show="state.achivementShow">
           <v-divider></v-divider>
           <v-card-text>{{ computed.todayPerson.achivement }}</v-card-text>
         </div>
-      </v-expand-transition>
+      </v-expand-transition>-->
     </v-card>
 
     <h2 class="mb-2">오늘 등록된 유공자</h2>
