@@ -1,7 +1,12 @@
 import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
 import { MainConst } from '~/Constant'
-import { IPersonItem } from '~/types'
+import { IPersonItem, IPersonDetail } from '~/types'
+
+export const useState = () =>
+  reactive({
+    achivementShow: false,
+  })
 
 export const useComputed = (context: SetupContext) =>
   reactive({
@@ -15,11 +20,18 @@ export const useComputed = (context: SetupContext) =>
       }))
     }),
     todayPerson: computed(() => {
-      const personDetail = context.root.$store.getters[`main/${MainConst.$Get.TodayPerson}`]
+      const personDetail: IPersonDetail =
+        context.root.$store.getters[`main/${MainConst.$Get.TodayPerson}`]
 
-      console.log(personDetail)
-
-      return personDetail
+      return {
+        ...personDetail,
+        birthDay: personDetail.birthDay
+          ? dayjs(personDetail.birthDay).format(personDetail.birthDayFormat)
+          : '미상',
+        deathDay: personDetail.deathDay
+          ? dayjs(personDetail.deathDay).format(personDetail.deathDayFormat)
+          : '미상',
+      }
     }),
   })
 
