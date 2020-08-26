@@ -38,5 +38,7 @@ export const usePageWatch = (context: SetupContext, state: IPersonListPageData) 
 ) => {
   context.root.$router.push({ query: { page: `${page}` } })
 
+  window.scrollTo(0, 0)
+
   await loadList(context, state)
 }

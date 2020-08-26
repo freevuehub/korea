@@ -18,7 +18,7 @@ export default {
    */
   head: {
     titleTemplate: '%s - ' + 'FreeVue',
-    title: 'Korea',
+    title: '나를 잊거든',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -77,8 +77,8 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   manifest: {
-    name: '출!사표',
-    short_name: '출!사표',
+    name: '나를 잊거든',
+    short_name: '나를 잊거든',
     start_url: '/?utm_source=homescreen',
     display: 'standalone',
     background_color: '#ffffff',
