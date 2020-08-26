@@ -16,8 +16,6 @@ export default defineComponent({
   setup(props) {
     const achiveBlockList = reactive({
       list: computed(() => {
-        console.log(props.achivement.split('\n').filter((block) => !!block))
-
         return props.achivement.split('\n').filter((block) => !!block)
       }),
     })
