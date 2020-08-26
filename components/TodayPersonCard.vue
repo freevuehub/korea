@@ -1,7 +1,7 @@
 <template>
   <v-card class="mb-5">
     <v-img class="align-end" :src="item.imgUrl">
-      <v-card-title class="title-name pa-1">{{ item.name }}</v-card-title>
+      <person-name>{{ item.name }}</person-name>
     </v-img>
     <v-card-subtitle>
       <span>{{ item.work }} / {{ item.hunkuk }}</span>
@@ -39,8 +39,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import { ImageTitle } from './'
 
 export default defineComponent({
+  components: {
+    personName: ImageTitle,
+  },
   props: {
     item: Object,
   },
