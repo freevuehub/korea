@@ -31,7 +31,7 @@
         transition="fade-transition"
       >
         <v-card class="mb-3">
-          <v-card-text>{{ computed.detail.achivement }}</v-card-text>
+          <achivement :achivement="computed.detail.achivement" />
         </v-card>
       </v-tab-item>
 
@@ -52,7 +52,13 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, watch } from '@vue/composition-api'
 import { useState, useComputed, useBeforeMount, useDetailWatch } from './_id.fn'
-import { CardTextRow, PersonDetailInfo, PersonPriceInfo, PersonSource } from '~/components'
+import {
+  CardTextRow,
+  PersonDetailInfo,
+  PersonPriceInfo,
+  PersonSource,
+  DetailAchivement,
+} from '~/components'
 
 export default defineComponent({
   components: {
@@ -60,6 +66,7 @@ export default defineComponent({
     info: PersonDetailInfo,
     price: PersonPriceInfo,
     sourceInfo: PersonSource,
+    achivement: DetailAchivement,
   },
   setup(_, context) {
     const state = useState()
