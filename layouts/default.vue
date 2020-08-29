@@ -38,3 +38,11 @@ export default defineComponent({
   },
 })
 </script>
+
+<style lang="scss">
+body {
+  max-width: 540px;
+  margin: auto;
+  background-color: #121212;
+}
+</style>
