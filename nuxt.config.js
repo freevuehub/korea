@@ -57,6 +57,7 @@ export default {
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
     '@nuxtjs/vuetify',
+    'nuxt-esbuild',
   ],
   /*
    ** Nuxt.js modules
@@ -65,7 +66,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    ['@nuxtjs/google-analytics', { id: 'UA-138408307-3' }],
+    ['@nuxtjs/google-analytics', { id: process.env.GOOGLE_ANALYTICE_ID }],
   ],
   /*
    ** Axios module configuration

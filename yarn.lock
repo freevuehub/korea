@@ -4646,6 +4646,20 @@ es6-object-assign@^1.1.0:
   resolved "https://registry.yarnpkg.com/es6-object-assign/-/es6-object-assign-1.1.0.tgz#c2c3582656247c39ea107cb1e6652b6f9f24523c"
   integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
 
+esbuild-loader@^2.0.1:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/esbuild-loader/-/esbuild-loader-2.2.0.tgz#a1f415bb15c34e1942f6adfed1d341c9dbfa7c10"
+  integrity sha512-FbAeYcLw5PxloT1zuo3mVPk5si2sXIP+sxgvNWyMPc4XAhIiqtiAL82VBNqD6rZFRRu29j3TaMufJUCXnmXswA==
+  dependencies:
+    esbuild "^0.6.27"
+    loader-utils "^2.0.0"
+    webpack-sources "^1.4.3"
+
+esbuild@^0.6.27:
+  version "0.6.28"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.6.28.tgz#b14fc7a2a04d13c416f75024ac5c449f4248edc4"
+  integrity sha512-VU1QBpzUiuPdrmt6oN1Xd/w/xurSqvsrIUFKPIV9K25Fedqx0Zb9NaBtPlFXawM5vt0dxsbpKJxgylmPz1GlyQ==
+
 escalade@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.0.2.tgz#6a580d70edb87880f22b4c91d0d56078df6962c4"
@@ -8188,6 +8202,13 @@ num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
+
+nuxt-esbuild@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/nuxt-esbuild/-/nuxt-esbuild-1.0.2.tgz#d884f98ea797a3f450eb7b0a5963e00e83f7c418"
+  integrity sha512-TMmZTwWCcAfHAxmJtDPBTAz01LCTe3z+OdTX7020BAVg6637CPmZQ3+R7bjGFIi48WCroRZmHjcRdUFoJ6hnrA==
+  dependencies:
+    esbuild-loader "^2.0.1"
 
 nuxt@^2.14.0:
   version "2.14.2"

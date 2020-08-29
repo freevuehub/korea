@@ -31,7 +31,8 @@
     "axios": "^0.19.2",
     "dayjs": "^1.8.33",
     "material-design-icons-iconfont": "^5.0.1",
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "nuxt-esbuild": "^1.0.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.0",
