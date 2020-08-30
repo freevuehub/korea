@@ -25,9 +25,21 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || '',
+        content:
+          process.env.npm_package_description ||
+          '독립 유공자를 조금 더 쉽게 자주 접할 수 있게 해줍니다.',
+      },
+      {
+        name: 'keywords',
+        content:
+          'FreeVue Project, FreeVue - Project, FreeVue, freevue, Korea, 나를 잊거든, 독립 유공자, 유공자',
       },
       { name: 'theme-color', content: '#71abbd' },
+      { name: 'author', content: 'FreeVue' },
+      { name: 'og:image', content: '/icon.png' },
+      { name: 'og:title', content: '나를 잊거든 - FreeVue' },
+      { name: 'twitter:title', content: '나를 잊거든 - FreeVue' },
+      { name: 'subject', content: 'Freevue - Project' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

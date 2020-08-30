@@ -2,6 +2,7 @@
   "name": "korea_front",
   "version": "1.0.0",
   "private": true,
+  "description": "독립 유공자를 조금 더 쉽게 자주 접할 수 있게 해줍니다.",
   "scripts": {
     "dev": "nuxt-ts",
     "build": "nuxt-ts build",
