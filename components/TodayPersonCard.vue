@@ -1,6 +1,6 @@
 <template>
   <v-card class="mb-5">
-    <v-img class="align-end" :src="item.imgUrl">
+    <v-img class="align-end" :src="item.imgUrl || '/icon.png'">
       <person-name>{{ item.name }}</person-name>
     </v-img>
     <v-card-subtitle>
@@ -46,7 +46,10 @@ export default defineComponent({
     personName: ImageTitle,
   },
   props: {
-    item: Object,
+    item: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 })
 </script>
