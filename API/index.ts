@@ -77,23 +77,6 @@ export const getPersonItem = (id: number): Promise<IPersonItemResponse> =>
     })()
   })
 
-export const putPersonClickCount = (id: number, clickCount: number): Promise<IPersonItemResponse> =>
-  new Promise((resolve, reject) => {
-    ;(async () => {
-      try {
-        const response = await axios.put(endpoint.person.request.item(id), { clickCount })
-
-        if (response.data.status === 2000) {
-          resolve(response.data)
-        } else {
-          reject(response)
-        }
-      } catch (err) {
-        reject(err)
-      }
-    })()
-  })
-
 export const getSourceDetail = (id: number): Promise<ISourceItemResponse> =>
   new Promise((resolve, reject) => {
     ;(async () => {

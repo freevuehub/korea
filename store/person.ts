@@ -62,10 +62,6 @@ export const actions = {
     try {
       const response = await getPersonItem(id)
 
-      // const count = response.result.clickCount + 1
-
-      // await putPersonClickCount(id, count)
-
       store.commit(PersonConst.$Set.Item, response.result)
 
       return response
