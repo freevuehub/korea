@@ -1,5 +1,5 @@
 import { PersonConst } from '~/Constant'
-import { getPersonList, getPersonItem, putPersonClickCount } from '~/API'
+import { getPersonList, getPersonItem } from '~/API'
 import { IPersonItem, IPersonListPageData, IPersonDetail } from '~/types'
 
 interface IState {
@@ -62,9 +62,9 @@ export const actions = {
     try {
       const response = await getPersonItem(id)
 
-      const count = response.result.clickCount + 1
+      // const count = response.result.clickCount + 1
 
-      await putPersonClickCount(id, count)
+      // await putPersonClickCount(id, count)
 
       store.commit(PersonConst.$Set.Item, response.result)
 
