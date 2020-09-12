@@ -30,7 +30,13 @@ export const useComputed = (context: SetupContext) =>
   })
 
 export const useBeforeMount = (context: SetupContext, state: IPersonListPageData) => async () => {
-  await loadList(context, state)
+  if (context.root.$route.query.page) {
+    await loadList(context, state)
+  } else {
+    context.root.$router.push({
+      query: { page: '1' },
+    })
+  }
 }
 
 export const usePageWatch = (context: SetupContext, state: IPersonListPageData) => async (
