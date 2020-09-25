@@ -3,7 +3,9 @@
     <v-card
       v-for="person in computed.personList"
       :key="person.id"
-      class="d-flex mb-3"
+      class="d-flex mb-5"
+      :class="$round"
+      elevation="10"
       nuxt
       :to="`/person/${person.id}`"
     >
@@ -14,7 +16,7 @@
           <v-list-item-subtitle>{{ person.birthDay }} ~ {{ person.deathDay }}</v-list-item-subtitle>
         </v-list-item-content>
 
-        <v-list-item-avatar tile size="80" color="grey">
+        <v-list-item-avatar tile size="80" color="grey" :class="$round">
           <img :src="person.imgUrl || './noneImg.png'" :alt="person.name" />
         </v-list-item-avatar>
       </v-list-item>

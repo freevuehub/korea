@@ -1,5 +1,6 @@
 <template>
-  <v-card>
+  <v-card :class="$round" elevation="10">
+    <v-card-title>포상 정보</v-card-title>
     <v-card-text>
       <row class="mb-3" title="훈격">{{ item.hunkuk }}</row>
       <row class="mb-3" title="운동계열">{{ item.work }}</row>

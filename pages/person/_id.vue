@@ -13,14 +13,10 @@
         reverse-transition="fade-transition"
         transition="fade-transition"
       >
-        <v-card class="mb-3">
+        <v-card class="mb-3" :class="$round" elevation="10">
           <v-img class="align-end" :src="computed.detail.imgUrl || '/icon.png'" />
         </v-card>
-
-        <h1 class="mb-2">기본 정보</h1>
         <info :item="computed.detail" />
-
-        <h1 class="mb-2">포상 정보</h1>
         <price :item="computed.detail" />
       </v-tab-item>
 
@@ -30,7 +26,7 @@
         reverse-transition="fade-transition"
         transition="fade-transition"
       >
-        <v-card class="mb-3">
+        <v-card class="mb-3" :class="$round" elevation="10">
           <achivement :achivement="computed.detail.achivement" />
         </v-card>
       </v-tab-item>
@@ -41,7 +37,7 @@
         reverse-transition="fade-transition"
         transition="fade-transition"
       >
-        <v-card class="mb-3">
+        <v-card class="mb-3" :class="$round" elevation="10">
           <source-info :item="computed.source" />
         </v-card>
       </v-tab-item>

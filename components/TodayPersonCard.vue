@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-5">
+  <v-card class="mb-5" :class="$round" elevation="10">
     <v-img class="align-end" :src="item.imgUrl || '/icon.png'">
       <person-name>{{ item.name }}</person-name>
     </v-img>

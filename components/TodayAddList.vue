@@ -1,7 +1,7 @@
 <template>
   <v-row justify="space-between">
     <v-col v-for="person in list" :key="person.id" cols="6">
-      <v-card nuxt :to="`/person/${person.id}`">
+      <v-card nuxt :to="`/person/${person.id}`" :class="$round" elevation="10">
         <v-img class="white--text align-end" height="200px" :src="person.imgUrl || './noneImg.png'">
           <person-name>{{ person.name }}</person-name>
         </v-img>
