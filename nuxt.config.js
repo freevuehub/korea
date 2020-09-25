@@ -54,6 +54,7 @@ export default {
   plugins: [
     '~/plugins/composition-api',
     '~/plugins/dayjs',
+    '~/plugins/themeClass',
     { src: '~/plugins/ga.js', mode: 'client' },
   ],
   /*
