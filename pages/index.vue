@@ -15,6 +15,7 @@ import { useState, useComputed, useMounted } from './index.fn'
 import { TodayPersonCard, TodayAddList } from '~/components'
 
 export default defineComponent({
+  middleware: ['main'],
   components: {
     person: TodayPersonCard,
     addList: TodayAddList,
