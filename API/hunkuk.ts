@@ -1,11 +1,9 @@
 import endpoint from './endpoint.config'
 import { AxiosGet } from './util'
+import { IHunkukListItem } from '~/types'
 
 export interface IHunkukListResponse {
-  result: {
-    id: number
-    name: string
-  }
+  result: IHunkukListItem[]
 }
 
 export const getHunkukList = async () => {

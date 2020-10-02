@@ -40,3 +40,15 @@ export const SourceConst = {
     Item: 'GET/ITEM',
   },
 }
+
+export const HunkukConst = {
+  $Set: {
+    List: 'SET/LIST',
+  },
+  $Call: {
+    List: 'CALL/LIST',
+  },
+  $Get: {
+    List: 'GET/LIST',
+  },
+}

@@ -38,3 +38,8 @@ export interface ISourceDetail {
   imgSource: ISourceDetailItem
   achivementSource: ISourceDetailItem
 }
+
+export interface IHunkukListItem {
+  id: number
+  name: string
+}
