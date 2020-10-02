@@ -25,6 +25,7 @@ export interface IPersonDetail extends IPersonItem {
 export interface IPersonListPageData {
   page: number
   limit: number
+  searchText: string
 }
 
 export interface ISourceDetailItem {

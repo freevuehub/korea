@@ -11,6 +11,7 @@ export const useState = (context: SetupContext) =>
   reactive<IPersonListPageData>({
     page: Number(context.root.$route.query.page || 1),
     limit: 10,
+    searchText: '',
   })
 
 export const useComputed = (context: SetupContext) =>

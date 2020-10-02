@@ -1,5 +1,18 @@
 <template>
   <v-container>
+    <v-text-field
+      v-model="state.searchText"
+      append-icon="search"
+      solo
+      clear-icon="mdi-close-circle"
+      clearable
+      label="찾으시는 이름을 입력해주세요."
+      type="text"
+      hide-details
+      @click:append="state.searchText = ''"
+      @click:clear="state.searchText = ''"
+    ></v-text-field>
+    <v-divider class="my-5"></v-divider>
     <v-card
       v-for="person in computed.personList"
       :key="person.id"
