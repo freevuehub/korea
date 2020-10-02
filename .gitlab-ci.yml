@@ -1,7 +1,18 @@
 stages:
-  - Setting
   - Build
+  - Setting
   - Deploy
+
+Docker Build Image:
+  stage: Build
+  image: docker:latest
+  before_script:
+    - cd /volume1/docker/Korea-Front
+    - git pull origin master
+  script:
+    - docker build --tag korea/front .
+  only:
+    - tags
 
 Docker Remove Container:
   stage: Setting
@@ -16,18 +27,7 @@ Docker Delete Image:
   stage: Setting
   image: docker:latest
   script:
-    - docker rmi `docker images | awk '$1 ~ /korea\/front/ {print $3}'`
-  only:
-    - tags
-
-Docker Build Image:
-  stage: Build
-  image: docker:latest
-  before_script:
-    - cd /volume1/docker/Korea-Front
-    - git pull origin master
-  script:
-    - docker build --tag korea/front .
+    - docker rmi `docker images | awk '$1 ~ /\<none\>/ {print $3}'`
   only:
     - tags
 
