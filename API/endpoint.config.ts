@@ -19,6 +19,11 @@ interface IConfig {
       item(id: number): string
     }
   }
+  hunkuk: {
+    request: {
+      list(): string
+    }
+  }
 }
 
 const config: IConfig = {
@@ -36,6 +41,11 @@ const config: IConfig = {
   source: {
     request: {
       item: (id) => `${SERVER}/source/${id}`,
+    },
+  },
+  hunkuk: {
+    request: {
+      list: () => `${SERVER}/hunkuk`,
     },
   },
 }
