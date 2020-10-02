@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <h2 class="mb-2">오늘의 인물</h2>
-    <person :item="todayPerson" />
+    <person-image :url="todayPerson.imgUrl" />
+    <person-info :item="todayPerson" />
 
     <h2 class="mb-2">오늘 등록된 유공자</h2>
     <add-list v-if="!!todayAddList.length" :list="todayAddList" />
@@ -14,12 +14,13 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import { useState, useComputed } from './index.fn'
-import { TodayPersonCard, TodayAddList } from '~/components'
+import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/components'
 
 export default defineComponent({
   middleware: ['main'],
   components: {
-    person: TodayPersonCard,
+    personImage: TodayPersonImgCard,
+    personInfo: TodayPersonInfoCard,
     addList: TodayAddList,
   },
   setup(_, context) {
