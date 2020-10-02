@@ -1,6 +1,6 @@
 <template>
   <v-card class="mb-5" :class="$round" elevation="10">
-    <v-img class="align-end" :src="item.imgUrl || '/icon.png'">
+    <v-img class="align-end" :src="item.imgUrl || '/icon.png'" min-height="200px">
       <person-name>{{ item.name }}</person-name>
     </v-img>
     <v-card-subtitle>

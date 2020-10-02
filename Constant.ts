@@ -1,6 +1,7 @@
 export const MainConst = {
   $Set: {
-    Item: 'SET/ITEM',
+    TodayAddPerson: 'SET/TODAY/ADD/PERSON',
+    TodayPerson: 'SET/TODAY/PERSON',
   },
   $Call: {
     Item: 'CALL/ITEM',

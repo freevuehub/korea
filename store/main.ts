@@ -1,13 +1,14 @@
 import { MainConst } from '~/Constant'
-import { getMainData } from '~/API'
 import { IPersonItem, IPersonDetail } from '~/types'
 
+type ITodayAddPerson = IPersonItem[] | []
+
 interface IState {
-  todayAddPerson: IPersonItem[] | []
+  todayAddPerson: ITodayAddPerson
   todayPerson: IPersonDetail
 }
 
-export const state = () => ({
+export const state = (): IState => ({
   todayAddPerson: [],
   todayPerson: {
     achivement: '',
@@ -32,17 +33,18 @@ export const state = () => ({
 })
 
 export const mutations = {
-  [MainConst.$Set.Item](state: IState, payload: IState) {
-    state.todayAddPerson = payload.todayAddPerson
-    state.todayPerson = payload.todayPerson
+  [MainConst.$Set.TodayPerson](state: IState, payload: IPersonDetail) {
+    state.todayPerson = payload
+  },
+  [MainConst.$Set.TodayAddPerson](state: IState, payload: ITodayAddPerson) {
+    state.todayAddPerson = payload
   },
 }
 
 export const actions = {
-  async [MainConst.$Call.Item](store: any) {
-    const { todayAddPerson, todayPerson } = await getMainData()
-
-    store.commit(MainConst.$Set.Item, { todayAddPerson, todayPerson })
+  [MainConst.$Call.Item](store: any, payload: IState) {
+    store.commit(MainConst.$Set.TodayPerson, payload.todayPerson)
+    store.commit(MainConst.$Set.TodayAddPerson, payload.todayAddPerson)
   },
 }
 

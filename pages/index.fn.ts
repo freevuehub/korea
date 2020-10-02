@@ -34,7 +34,3 @@ export const useComputed = (context: SetupContext) => ({
     }
   }),
 })
-
-export const useMounted = (context: SetupContext) => () => {
-  context.root.$store.dispatch(`main/${MainConst.$Call.Item}`)
-}
