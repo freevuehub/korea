@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { ImageTitle } from './'
+import { ImageTitle } from '../'
 
 export default defineComponent({
   components: {
