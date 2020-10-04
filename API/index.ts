@@ -16,10 +16,6 @@ interface IPersonListResponse extends IApiSuccessCode {
   totalCount: number
 }
 
-interface IPersonItemResponse extends IApiSuccessCode {
-  result: IPersonDetail
-}
-
 interface ISourceItemResponse extends IApiSuccessCode {
   result: ISourceDetail
 }
@@ -60,23 +56,6 @@ export const getPersonList = (page: number, limit: number): Promise<IPersonListR
     })()
   })
 
-export const getPersonItem = (id: number): Promise<IPersonItemResponse> =>
-  new Promise((resolve, reject) => {
-    ;(async () => {
-      try {
-        const response = await axios.get(endpoint.person.request.item(id))
-
-        if (response.data.status === 2000) {
-          resolve(response.data)
-        } else {
-          reject(response)
-        }
-      } catch (err) {
-        reject(err)
-      }
-    })()
-  })
-
 export const getSourceDetail = (id: number): Promise<ISourceItemResponse> =>
   new Promise((resolve, reject) => {
     ;(async () => {
@@ -94,4 +73,5 @@ export const getSourceDetail = (id: number): Promise<ISourceItemResponse> =>
     })()
   })
 
+export * from './person'
 export * from './hunkuk'
