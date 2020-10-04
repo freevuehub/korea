@@ -1,5 +1,5 @@
 import { PersonConst } from '~/Constant'
-import { getPersonList, getPersonItem } from '~/API'
+import { getPersonList } from '~/API'
 import { IPersonItem, IPersonListPageData, IPersonDetail } from '~/types'
 
 interface IState {
