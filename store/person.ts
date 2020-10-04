@@ -58,16 +58,8 @@ export const actions = {
       return err
     }
   },
-  [PersonConst.$Call.Item]: async (store: any, id: number) => {
-    try {
-      const response = await getPersonItem(id)
-
-      store.commit(PersonConst.$Set.Item, response.result)
-
-      return response
-    } catch (err) {
-      return err
-    }
+  [PersonConst.$Call.Item]: (store: any, payload: IPersonDetail) => {
+    store.commit(PersonConst.$Set.Item, payload)
   },
 }
 

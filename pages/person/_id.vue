@@ -46,8 +46,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount, watch } from '@vue/composition-api'
-import { useState, useComputed, useBeforeMount, useDetailWatch } from './_id.fn'
+import { defineComponent, watch } from '@vue/composition-api'
+import { useState, useComputed, useDetailWatch } from './_id.fn'
 import {
   CardTextRow,
   PersonDetailInfo,
@@ -57,6 +57,7 @@ import {
 } from '~/components'
 
 export default defineComponent({
+  middleware: ['person-id'],
   components: {
     row: CardTextRow,
     info: PersonDetailInfo,
@@ -67,8 +68,6 @@ export default defineComponent({
   setup(_, context) {
     const state = useState()
     const computed = useComputed(context)
-
-    onBeforeMount(useBeforeMount(context))
 
     watch(() => computed.detail, useDetailWatch(context, computed))
 
