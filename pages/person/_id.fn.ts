@@ -37,16 +37,6 @@ export const useComputed = (context: SetupContext) =>
     }),
   })
 
-export const useBeforeMount = (context: SetupContext) => async () => {
-  try {
-    const { $store, $route } = context.root
-
-    await $store.dispatch(`person/${PersonConst.$Call.Item}`, Number($route.params.id))
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 export const useDetailWatch = (context: SetupContext, computed: IComputed) => async () => {
   try {
     const { $store } = context.root
