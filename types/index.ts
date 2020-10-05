@@ -25,7 +25,8 @@ export interface IPersonDetail extends IPersonItem {
 export interface IPersonListPageData {
   page: number
   limit: number
-  searchText: string
+  searchText?: string
+  hunkukFilterId?: number
 }
 
 export interface ISourceDetailItem {
