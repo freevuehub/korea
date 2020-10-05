@@ -1,6 +1,6 @@
 import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
-import { PersonConst, HunkukConst } from '~/Constant'
+import { PersonConst } from '~/Constant'
 import { IPersonItem, IPersonListPageData } from '~/types'
 
 const loadList = async (context: SetupContext, { page, limit }: IPersonListPageData) => {
@@ -11,7 +11,6 @@ export const useState = (context: SetupContext) =>
   reactive<IPersonListPageData>({
     page: Number(context.root.$route.query.page || 1),
     limit: 10,
-    searchText: '',
   })
 
 export const useComputed = (context: SetupContext) => ({
@@ -26,9 +25,6 @@ export const useComputed = (context: SetupContext) => ({
   }),
   total: computed(() => {
     return context.root.$store.getters[`person/${PersonConst.$Get.Total}`]
-  }),
-  hunkukList: computed(() => {
-    return context.root.$store.getters[`hunkuk/${HunkukConst.$Get.List}`]
   }),
 })
 

@@ -1,39 +1,6 @@
 <template>
   <v-container>
-    <v-form>
-      <v-row>
-        <v-col cols="12">
-          <v-select
-            label="훈격"
-            :items="hunkukList"
-            item-text="name"
-            item-value="id"
-            hide-details
-            solo
-            :class="$round"
-            elevation="10"
-            multiple
-            chips
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            v-model="state.searchText"
-            :class="$round"
-            elevation="10"
-            append-icon="search"
-            solo
-            clear-icon="mdi-close-circle"
-            clearable
-            label="찾으시는 이름을 입력해주세요."
-            type="text"
-            hide-details
-            @click:append="state.searchText = ''"
-            @click:clear="state.searchText = ''"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-    </v-form>
+    <search-form />
     <v-divider class="my-5"></v-divider>
     <v-card
       v-for="person in personList"
@@ -63,12 +30,13 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, watch } from '@vue/composition-api'
 import { useState, useComputed, useBeforeMount, usePageWatch } from './index.fn'
-import { Pagination } from '~/components'
+import { Pagination, PersonSearchForm } from '~/components'
 
 export default defineComponent({
   middleware: ['person-list'],
   components: {
     Pagination,
+    searchForm: PersonSearchForm,
   },
   setup(_, context) {
     const state = useState(context)
