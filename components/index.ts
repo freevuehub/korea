@@ -9,3 +9,4 @@ export { default as ImageTitle } from './ImageTitle.vue'
 export { default as DetailAchivement } from './DetailAchivement.vue'
 
 export * from './main'
+export * from './person'
