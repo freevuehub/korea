@@ -37,25 +37,6 @@ export const getMainData = (): Promise<IMainItemResponse> =>
     })()
   })
 
-export const getPersonList = (page: number, limit: number): Promise<IPersonListResponse> =>
-  new Promise((resolve, reject) => {
-    ;(async () => {
-      try {
-        const params = { page, limit }
-
-        const response = await axios.get(endpoint.person.request.list(), { params })
-
-        if (response.data.status === 2000) {
-          resolve(response.data)
-        } else {
-          reject(response)
-        }
-      } catch (err) {
-        reject(err)
-      }
-    })()
-  })
-
 export const getSourceDetail = (id: number): Promise<ISourceItemResponse> =>
   new Promise((resolve, reject) => {
     ;(async () => {
