@@ -1,5 +1,5 @@
 <template>
-  <v-list>
+  <v-list class="pt-0">
     <v-list-item v-for="item in state.menu" :key="item.to" :to="item.to" router exact>
       <v-list-item-action>
         <v-icon>{{ item.icon }}</v-icon>
