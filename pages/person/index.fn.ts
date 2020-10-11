@@ -3,10 +3,6 @@ import dayjs from 'dayjs'
 import { PersonConst } from '~/Constant'
 import { IPersonItem, IPersonListPageData } from '~/types'
 
-const loadList = async (context: SetupContext, { page, limit }: IPersonListPageData) => {
-  await context.root.$store.dispatch(`person/${PersonConst.$Call.List}`, { page, limit })
-}
-
 export const useState = (context: SetupContext) =>
   reactive<IPersonListPageData>({
     page: Number(context.root.$route.query.page || 1),
@@ -28,22 +24,16 @@ export const useComputed = (context: SetupContext) => ({
   }),
 })
 
-export const useBeforeMount = (context: SetupContext, state: IPersonListPageData) => async () => {
-  if (context.root.$route.query.page) {
-    await loadList(context, state)
-  } else {
+export const useBeforeMount = (context: SetupContext) => () => {
+  if (!context.root.$route.query.page) {
     context.root.$router.push({
       query: { page: '1' },
     })
   }
 }
 
-export const usePageWatch = (context: SetupContext, state: IPersonListPageData) => async (
-  page: number
-) => {
+export const usePageWatch = (context: SetupContext) => (page: number) => {
   context.root.$router.push({ query: { page: `${page}` } })
 
   window.scrollTo(0, 0)
-
-  await loadList(context, state)
 }

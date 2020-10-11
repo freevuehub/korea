@@ -42,9 +42,9 @@ export default defineComponent({
     const state = useState(context)
     const computed = useComputed(context)
 
-    onBeforeMount(useBeforeMount(context, state))
+    onBeforeMount(useBeforeMount(context))
 
-    watch(() => state.page, usePageWatch(context, state))
+    watch(() => state.page, usePageWatch(context))
 
     return {
       state,
