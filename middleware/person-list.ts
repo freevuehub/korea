@@ -12,7 +12,12 @@ export default async (context: Context) => {
   }
 
   if (context.route.query.page) {
-    const response = await getPersonList(Number(context.route.query.page), 10)
+    const page = Number(context.route.query.page)
+    const limit = 10
+    const name = context.route.query.name || ''
+    const hunkuk = Number(context.route.query.hunkuk || 0)
+
+    const response = await getPersonList(page, limit, name, hunkuk)
 
     await context.app.store?.dispatch(`person/${PersonConst.$Call.List}`, response)
   }

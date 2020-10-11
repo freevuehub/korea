@@ -9,7 +9,7 @@ interface IState {
 export const useState = (context: SetupContext) =>
   reactive({
     searchText: context.root.$route.query.name || '',
-    hunkukFilterId: context.root.$route.query.id || 0,
+    hunkukFilterId: Number(context.root.$route.query.hunkuk || 0),
   })
 
 export const useComputed = (context: SetupContext) => ({
@@ -26,5 +26,10 @@ export const useSearchTextWatch = (context: SetupContext) => (text: string) => {
 }
 
 export const useHunkukFilterIdWatch = (context: SetupContext) => (id: number) => {
-  console.log(context, id)
+  context.root.$router.push({
+    query: {
+      ...context.root.$route.query,
+      hunkuk: `${id}`,
+    },
+  })
 }

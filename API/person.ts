@@ -7,9 +7,14 @@ interface IPersonItemResponse {
   result: IPersonDetail
 }
 
-export const getPersonList = async (page: number, limit: number) => {
+export const getPersonList = async (
+  page: number,
+  limit: number,
+  name: string = '',
+  hunkuk: number = 0
+) => {
   try {
-    const params = { page, limit }
+    const params = { page, limit, name, hunkuk }
 
     const response = await AxiosGet(endpoint.person.request.list(), { params })
 

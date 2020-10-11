@@ -27,7 +27,10 @@ export const useComputed = (context: SetupContext) => ({
 export const useBeforeMount = (context: SetupContext) => () => {
   if (!context.root.$route.query.page) {
     context.root.$router.push({
-      query: { page: '1' },
+      query: {
+        ...context.root.$route.query,
+        page: '1',
+      },
     })
   }
 }

@@ -35,11 +35,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, watch } from '@vue/composition-api'
 import {
   useState,
   useComputed,
-  // useHunkukFilterIdWatch,
+  useHunkukFilterIdWatch,
   // useSearchTextWatch,
 } from './person-search-form.fn'
 import { Pagination } from '~/components'
@@ -54,7 +54,7 @@ export default defineComponent({
     const computed = useComputed(context)
 
     // watch(() => state.searchText, useSearchTextWatch(context))
-    // watch(() => state.hunkukFilterId, useHunkukFilterIdWatch(context))
+    watch(() => state.hunkukFilterId, useHunkukFilterIdWatch(context))
 
     return {
       state,
