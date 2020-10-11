@@ -1,6 +1,6 @@
+import { IPersonDetail } from '@/types'
 import endpoint from './endpoint.config'
 import { AxiosGet } from './util'
-import { IPersonDetail } from '~/types'
 // import { IPersonDetail, IPersonListResponse } from '~/types'
 
 interface IPersonItemResponse {

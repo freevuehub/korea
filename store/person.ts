@@ -1,6 +1,5 @@
 import { PersonConst } from '~/Constant'
-import { getPersonList } from '~/API'
-import { IPersonItem, IPersonListPageData, IPersonDetail } from '~/types'
+import { IPersonItem, IPersonDetail } from '~/types'
 
 interface IState {
   personDetail: IPersonDetail
@@ -46,17 +45,9 @@ export const mutations = {
 }
 
 export const actions = {
-  [PersonConst.$Call.List]: async (store: any, { page, limit }: IPersonListPageData) => {
-    try {
-      const response = await getPersonList(page, limit)
-
-      store.commit(PersonConst.$Set.List, response.result)
-      store.commit(PersonConst.$Set.Total, response.totalCount)
-
-      return response
-    } catch (err) {
-      return err
-    }
+  [PersonConst.$Call.List]: (store: any, payload: any) => {
+    store.commit(PersonConst.$Set.List, payload.result)
+    store.commit(PersonConst.$Set.Total, payload.totalCount)
   },
   [PersonConst.$Call.Item]: (store: any, payload: IPersonDetail) => {
     store.commit(PersonConst.$Set.Item, payload)

@@ -1,6 +1,6 @@
 import { Context } from '@nuxt/types'
-import { getHunkukList } from '~/API'
-import { HunkukConst } from '~/Constant'
+import { getHunkukList, getPersonList } from '~/API'
+import { HunkukConst, PersonConst } from '~/Constant'
 
 export default async (context: Context) => {
   const hunkukList = context.app.store?.getters[`hunkuk/${HunkukConst.$Get.List}`]
@@ -11,5 +11,9 @@ export default async (context: Context) => {
     await context.app.store?.dispatch(`hunkuk/${HunkukConst.$Call.List}`, result)
   }
 
-  console.log(context)
+  if (context.route.query.page) {
+    const response = await getPersonList(Number(context.route.query.page), 10)
+
+    await context.app.store?.dispatch(`person/${PersonConst.$Call.List}`, response)
+  }
 }
