@@ -7,8 +7,8 @@ interface IState {
 }
 
 export const useState = (context: SetupContext) =>
-  reactive({
-    searchText: context.root.$route.query.name || '',
+  reactive<IState>({
+    searchText: `${context.root.$route.query.name || ''}`,
     hunkukFilterId: Number(context.root.$route.query.hunkuk || 0),
   })
 
@@ -21,8 +21,13 @@ export const useComputed = (context: SetupContext) => ({
   }),
 })
 
-export const useSearchTextWatch = (context: SetupContext) => (text: string) => {
-  console.log(context, text)
+export const useNameSearch = (context: SetupContext, state: IState) => () => {
+  context.root.$router.push({
+    query: {
+      ...context.root.$route.query,
+      name: state.searchText,
+    },
+  })
 }
 
 export const useHunkukFilterIdWatch = (context: SetupContext) => (id: number) => {

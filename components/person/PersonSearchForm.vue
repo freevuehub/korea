@@ -1,5 +1,5 @@
 <template>
-  <v-form>
+  <v-form @submit="onNameSearch" @keypress.enter="onNameSearch">
     <v-row>
       <v-col cols="12" class="pt-0">
         <v-select
@@ -26,7 +26,7 @@
           label="찾으시는 이름을 입력해주세요."
           type="text"
           hide-details
-          @click:append="state.searchText = ''"
+          @click:append="onNameSearch"
           @click:clear="state.searchText = ''"
         ></v-text-field>
       </v-col>
@@ -40,7 +40,7 @@ import {
   useState,
   useComputed,
   useHunkukFilterIdWatch,
-  // useSearchTextWatch,
+  useNameSearch,
 } from './person-search-form.fn'
 import { Pagination } from '~/components'
 
@@ -52,12 +52,13 @@ export default defineComponent({
   setup(_, context) {
     const state = useState(context)
     const computed = useComputed(context)
+    const onNameSearch = useNameSearch(context, state)
 
-    // watch(() => state.searchText, useSearchTextWatch(context))
     watch(() => state.hunkukFilterId, useHunkukFilterIdWatch(context))
 
     return {
       state,
+      onNameSearch,
       ...computed,
     }
   },
