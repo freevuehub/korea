@@ -1,7 +1,7 @@
 import { MainConst } from '~/Constant'
-import { IPersonItem, IPersonDetail } from '~/types'
+import { IPersonListItem, IPersonDetail } from '~/types'
 
-type ITodayAddPerson = IPersonItem[] | []
+type ITodayAddPerson = IPersonListItem[] | []
 
 interface IState {
   todayAddPerson: ITodayAddPerson

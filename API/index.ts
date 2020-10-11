@@ -1,19 +1,14 @@
 import axios from 'axios'
 import endpoint from './endpoint.config'
-import { IPersonItem, IPersonDetail, ISourceDetail } from '~/types'
+import { IPersonListItem, IPersonDetail, ISourceDetail } from '~/types'
 
 interface IApiSuccessCode {
   status: number
 }
 
 interface IMainItemResponse extends IApiSuccessCode {
-  todayAddPerson: IPersonItem[]
+  todayAddPerson: IPersonListItem[]
   todayPerson: IPersonDetail
-}
-
-interface IPersonListResponse extends IApiSuccessCode {
-  result: IPersonItem[]
-  totalCount: number
 }
 
 interface ISourceItemResponse extends IApiSuccessCode {

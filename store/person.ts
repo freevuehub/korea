@@ -1,10 +1,15 @@
 import { PersonConst } from '~/Constant'
-import { IPersonItem, IPersonDetail } from '~/types'
+import { IPersonListItem, IPersonDetail } from '~/types'
 
 interface IState {
   personDetail: IPersonDetail
-  personList: IPersonItem[]
+  personList: IPersonListItem[] | []
   listTotal: number
+}
+
+interface IPersonListResponse {
+  result: IPersonListItem[] | []
+  totalCount: number
 }
 
 export const state = (): IState => ({
@@ -33,7 +38,7 @@ export const state = (): IState => ({
 })
 
 export const mutations = {
-  [PersonConst.$Set.List]: (state: IState, payload: any) => {
+  [PersonConst.$Set.List]: (state: IState, payload: IPersonListItem[] | []) => {
     state.personList = payload
   },
   [PersonConst.$Set.Item]: (state: IState, payload: IPersonDetail) => {
@@ -45,7 +50,7 @@ export const mutations = {
 }
 
 export const actions = {
-  [PersonConst.$Call.List]: (store: any, payload: any) => {
+  [PersonConst.$Call.List]: (store: any, payload: IPersonListResponse) => {
     store.commit(PersonConst.$Set.List, payload.result)
     store.commit(PersonConst.$Set.Total, payload.totalCount)
   },

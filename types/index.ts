@@ -1,4 +1,4 @@
-export interface IPersonItem {
+export interface IPersonListItem {
   birthDay: string
   deathDay: string | null
   gender: number
@@ -11,7 +11,7 @@ export interface IPersonItem {
   deathDayFormat: string
 }
 
-export interface IPersonDetail extends IPersonItem {
+export interface IPersonDetail extends IPersonListItem {
   achivement: string | null
   diffName: string | null
   judgeYear: string

@@ -1,7 +1,7 @@
 import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
 import { PersonConst } from '~/Constant'
-import { IPersonItem, IPersonListPageData } from '~/types'
+import { IPersonListItem, IPersonListPageData } from '~/types'
 
 export const useState = (context: SetupContext) =>
   reactive<IPersonListPageData>({
@@ -13,7 +13,7 @@ export const useComputed = (context: SetupContext) => ({
   personList: computed(() => {
     const list = context.root.$store.getters[`person/${PersonConst.$Get.List}`]
 
-    return list.map((person: IPersonItem) => ({
+    return list.map((person: IPersonListItem) => ({
       ...person,
       birthDay: person.birthDay ? dayjs(person.birthDay).format(person.birthDayFormat) : '미상',
       deathDay: person.deathDay ? dayjs(person.deathDay).format(person.deathDayFormat) : '미상',
