@@ -14,7 +14,7 @@ export default async (context: Context) => {
   if (context.route.query.page) {
     const page = Number(context.route.query.page)
     const limit = 10
-    const name = context.route.query.name || ''
+    const name = `${context.route.query.name || ''}`
     const hunkuk = Number(context.route.query.hunkuk || 0)
 
     const response = await getPersonList(page, limit, name, hunkuk)
