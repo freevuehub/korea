@@ -7,7 +7,7 @@
     <v-main>
       <nuxt />
     </v-main>
-    <v-footer absolute app class="pa-3">
+    <v-footer fixed app class="pa-3">
       <strong class="mr-3">FreeVue</strong>
       Copyright &copy; {{ state.year }}.
     </v-footer>
@@ -38,11 +38,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style lang="scss">
-body {
-  max-width: 540px;
-  margin: auto;
-  background-color: #121212;
-}
-</style>
