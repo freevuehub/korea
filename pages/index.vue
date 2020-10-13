@@ -23,6 +23,7 @@ import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/compone
 
 export default defineComponent({
   middleware: ['main'],
+  layout: 'main',
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
