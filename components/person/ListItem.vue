@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex mb-5" :class="$round" elevation="10" nuxt :to="`/person/${item.id}`">
+  <v-card class="d-flex" :class="$round" elevation="10" nuxt :to="`/person/${item.id}`">
     <v-list-item three-line>
       <v-list-item-content>
         <div class="overline mb-4">{{ item.hunkuk }} / {{ item.work }}</div>
