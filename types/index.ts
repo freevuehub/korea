@@ -44,3 +44,8 @@ export interface IHunkukListItem {
   id: number
   name: string
 }
+
+export interface IWorkListItem {
+  id: number
+  name: string
+}

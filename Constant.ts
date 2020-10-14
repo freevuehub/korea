@@ -52,3 +52,15 @@ export const HunkukConst = {
     List: 'GET/LIST',
   },
 }
+
+export const WorkConst = {
+  $Set: {
+    List: 'SET/LIST',
+  },
+  $Call: {
+    List: 'CALL/LIST',
+  },
+  $Get: {
+    List: 'GET/LIST',
+  },
+}
