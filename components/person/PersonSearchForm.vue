@@ -1,7 +1,7 @@
 <template>
   <v-form @submit="onNameSearch" @keypress.enter="onNameSearch">
     <v-row>
-      <v-col cols="12" class="pt-0">
+      <v-col cols="6" class="pt-0 pr-2">
         <v-select
           v-model="state.hunkukFilterId"
           label="훈격"
@@ -14,7 +14,20 @@
           elevation="10"
         />
       </v-col>
-      <v-col cols="12" class="py-0">
+      <v-col cols="6" class="pt-0 pl-2">
+        <v-select
+          v-model="state.workFilterId"
+          label="운동계열"
+          :items="workList"
+          item-text="name"
+          item-value="id"
+          hide-details
+          solo
+          :class="$round"
+          elevation="10"
+        />
+      </v-col>
+      <v-col cols="12" class="py-0 pt-1">
         <v-text-field
           v-model="state.searchText"
           :class="$round"
