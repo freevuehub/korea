@@ -11,7 +11,7 @@ export const useState = (context: SetupContext) =>
   reactive<IState>({
     searchText: `${context.root.$route.query.name || ''}`,
     hunkukFilterId: Number(context.root.$route.query.hunkuk || 0),
-    workFilterId: Number(context.root.$route.query.hunkuk || 0),
+    workFilterId: Number(context.root.$route.query.work || 0),
   })
 
 export const useComputed = (context: SetupContext) => ({
@@ -40,6 +40,15 @@ export const useHunkukFilterIdWatch = (context: SetupContext) => (id: number) =>
     query: {
       ...context.root.$route.query,
       hunkuk: `${id}`,
+    },
+  })
+}
+
+export const useWorkFilterIdWatch = (context: SetupContext) => (id: number) => {
+  context.root.$router.push({
+    query: {
+      ...context.root.$route.query,
+      work: `${id}`,
     },
   })
 }

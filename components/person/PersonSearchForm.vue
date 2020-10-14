@@ -53,6 +53,7 @@ import {
   useState,
   useComputed,
   useHunkukFilterIdWatch,
+  useWorkFilterIdWatch,
   useNameSearch,
 } from './person-search-form.fn'
 import { Pagination } from '~/components'
@@ -68,6 +69,7 @@ export default defineComponent({
     const onNameSearch = useNameSearch(context, state)
 
     watch(() => state.hunkukFilterId, useHunkukFilterIdWatch(context))
+    watch(() => state.workFilterId, useWorkFilterIdWatch(context))
 
     return {
       state,
