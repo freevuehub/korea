@@ -1,9 +1,9 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer v-model="state.drawer" fixed app>
-      <nav-list></nav-list>
-    </v-navigation-drawer>
-    <app-bar v-model="state.drawer"></app-bar>
+    <v-app-bar color="primary" dense dark app fixes>
+      <v-spacer />
+      <v-btn text nuxt to="/person">국가유공자 리스트</v-btn>
+    </v-app-bar>
     <v-main>
       <nuxt />
     </v-main>
