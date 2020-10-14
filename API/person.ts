@@ -11,10 +11,11 @@ export const getPersonList = async (
   page: number,
   limit: number,
   name: string = '',
-  hunkuk: number = 0
+  hunkuk: number = 0,
+  work: number = 0
 ) => {
   try {
-    const params = { page, limit, name, hunkuk }
+    const params = { page, limit, name, hunkuk, work }
 
     const response = await AxiosGet(endpoint.person.request.list(), { params })
 

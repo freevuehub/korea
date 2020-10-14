@@ -22,8 +22,9 @@ export default async (context: Context) => {
     const limit = 10
     const name = `${context.route.query.name || ''}`
     const hunkuk = Number(context.route.query.hunkuk || 0)
+    const work = Number(context.route.query.work || 0)
 
-    const response = await getPersonList(page, limit, name, hunkuk)
+    const response = await getPersonList(page, limit, name, hunkuk, work)
 
     await context.app.store?.dispatch(`person/${PersonConst.$Call.List}`, response)
   }
