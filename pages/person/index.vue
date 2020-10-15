@@ -10,14 +10,14 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, watch } from '@vue/composition-api'
 import { useState, useComputed, useBeforeMount, usePageWatch } from './index.fn'
-import { Pagination, PersonSearchForm, ListItem } from '~/components'
+import { Pagination, PersonSearchForm, PersonListItem } from '~/components'
 
 export default defineComponent({
   middleware: ['person-list'],
   components: {
     Pagination,
     searchForm: PersonSearchForm,
-    ListItem,
+    listItem: PersonListItem,
   },
   setup(_, context) {
     const state = useState(context)

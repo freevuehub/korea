@@ -1,2 +1,2 @@
 export { default as PersonSearchForm } from './PersonSearchForm.vue'
-export { default as ListItem } from './ListItem.vue'
+export { default as PersonListItem } from './PersonListItem.vue'

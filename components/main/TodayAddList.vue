@@ -8,12 +8,12 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { ImageTitle, ListItem } from '../'
+import { ImageTitle, PersonListItem } from '../'
 
 export default defineComponent({
   components: {
     personName: ImageTitle,
-    ListItem,
+    listItem: PersonListItem,
   },
   props: {
     list: Array,
