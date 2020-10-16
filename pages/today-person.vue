@@ -1,22 +1,29 @@
 <template>
-  <v-container>
+  <v-container class="py-0">
     <v-row class="justify-center">
-      <v-col sm="10">
-        <v-row>
-          <v-col sm="6" lg="4">
-            <person-image :url="todayPerson.imgUrl" />
-          </v-col>
-          <v-col sm="6" lg="8">
-            <person-info :item="todayPerson" />
-          </v-col>
-        </v-row>
-      </v-col>
-      <v-col sm="10">
-        <h2 class="mb-2">오늘 등록된 유공자</h2>
-        <add-list v-if="!!todayAddList.length" :list="todayAddList" />
-        <v-alert v-else :class="$round" elevation="10" type="info">
-          오늘 등록된 유공자가 없습니다.
-        </v-alert>
+      <v-col xs="12" sm="10" class="py-0">
+        <v-timeline align-top>
+          <v-timeline-item v-for="n in 4" :key="n" large>
+            <template v-slot:icon>
+              <v-avatar>
+                <img src="/noneImg.png" alt="" />
+              </v-avatar>
+            </template>
+            <template v-slot:opposite>
+              <span>Tus eu perfecto</span>
+            </template>
+            <v-card class="elevation-2">
+              <v-card-title class="headline">
+                Lorem ipsum
+              </v-card-title>
+              <v-card-text>
+                Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec
+                ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril
+                disputando voluptatibus, vix an salutandi sententiae.
+              </v-card-text>
+            </v-card>
+          </v-timeline-item>
+        </v-timeline>
       </v-col>
     </v-row>
   </v-container>
@@ -29,7 +36,6 @@ import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/compone
 
 export default defineComponent({
   middleware: ['main'],
-  layout: 'main',
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,

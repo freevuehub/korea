@@ -6,7 +6,6 @@
         <v-list-item-title class="headline mb-1">{{ item.name }}</v-list-item-title>
         <v-list-item-subtitle>{{ item.birthDay }} ~ {{ item.deathDay }}</v-list-item-subtitle>
       </v-list-item-content>
-
       <v-list-item-avatar tile size="80" color="grey" :class="$round">
         <img :src="item.imgUrl || './noneImg.png'" :alt="item.name" />
       </v-list-item-avatar>
