@@ -28,6 +28,11 @@ export default defineComponent({
           title: '국가유공자 리스트',
           to: '/person',
         },
+        {
+          icon: 'today',
+          title: '오늘의 인물 리스트',
+          to: '/today-person',
+        },
       ],
     })
 
