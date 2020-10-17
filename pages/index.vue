@@ -40,8 +40,8 @@ export default defineComponent({
     const computed = useComputed(context)
 
     onMounted(() => {
-      const onWindowScroll = (event: any) => {
-        console.log(event)
+      const onWindowScroll = () => {
+        console.log(1)
       }
 
       window.addEventListener('scroll', onWindowScroll)
