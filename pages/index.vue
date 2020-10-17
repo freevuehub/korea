@@ -23,12 +23,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, onMounted } from '@vue/composition-api'
 import { useState, useComputed } from './index.fn'
 import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/components'
 
 export default defineComponent({
   middleware: ['main'],
+  layout: 'main',
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
@@ -37,6 +38,14 @@ export default defineComponent({
   setup(_, context) {
     const state = useState()
     const computed = useComputed(context)
+
+    onMounted(() => {
+      const onWindowScroll = (event: any) => {
+        console.log(event)
+      }
+
+      window.addEventListener('scroll', onWindowScroll)
+    })
 
     return {
       state,
