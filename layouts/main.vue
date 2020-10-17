@@ -1,6 +1,9 @@
 <template>
   <v-app dark>
     <v-app-bar color="primary" dense dark app fixes>
+      <v-avatar>
+        <img src="/icon.png" alt="" />
+      </v-avatar>
       <v-spacer />
       <v-btn text nuxt to="/person">국가유공자 리스트</v-btn>
     </v-app-bar>
