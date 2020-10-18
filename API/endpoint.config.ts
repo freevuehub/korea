@@ -29,6 +29,11 @@ interface IConfig {
       list(): string
     }
   }
+  todayPerson: {
+    request: {
+      list(): string
+    }
+  }
 }
 
 const config: IConfig = {
@@ -56,6 +61,11 @@ const config: IConfig = {
   work: {
     request: {
       list: () => `${SERVER}/work`,
+    },
+  },
+  todayPerson: {
+    request: {
+      list: () => `${SERVER}/today-person`,
     },
   },
 }
