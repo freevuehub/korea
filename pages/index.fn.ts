@@ -1,7 +1,7 @@
 import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
 import { MainConst } from '~/Constant'
-import { IPersonListItem, IPersonDetail } from '~/types'
+import { IPersonListItem, IPersonDetail, INameAndImage } from '~/types'
 
 export const useState = () =>
   reactive({
@@ -32,5 +32,10 @@ export const useComputed = (context: SetupContext) => ({
         : '미상',
       judgeYear: dayjs(personDetail.judgeYear).format('YYYY'),
     }
+  }),
+  personFaces: computed(() => {
+    const data: INameAndImage = context.root.$store.getters[`main/${MainConst.$Get.NameAndImage}`]
+
+    return data
   }),
 })

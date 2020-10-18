@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+  <v-container fluid class="pa-0">
+    <FaceGrid />
     <v-row class="align-center flex-column">
       <v-col xs="12" sm="10">
         <v-row>
@@ -25,7 +26,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from '@vue/composition-api'
 import { useState, useComputed } from './index.fn'
-import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/components'
+import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard, FaceGrid } from '~/components'
 
 export default defineComponent({
   middleware: ['main'],
@@ -34,6 +35,7 @@ export default defineComponent({
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
     addList: TodayAddList,
+    FaceGrid,
   },
   setup(_, context) {
     const state = useState()

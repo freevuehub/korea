@@ -1,3 +1,5 @@
 export { default as TodayPersonImgCard } from './TodayPersonImgCard.vue'
 export { default as TodayPersonInfoCard } from './TodayPersonInfoCard.vue'
 export { default as TodayAddList } from './TodayAddList.vue'
+export { default as FaceGrid } from './FaceGrid.vue'
+export { default as FadeImageBlock } from './FadeImageBlock.vue'
