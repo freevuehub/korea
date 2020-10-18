@@ -59,3 +59,14 @@ export interface IWorkListItem {
   id: number
   name: string
 }
+
+export interface ITodayPersonListItem {
+  date: string
+  id: number
+  name: string
+  work: string
+  hunkuk: string
+  imgUrl: string
+  birthDay: string
+  deathDay: string
+}

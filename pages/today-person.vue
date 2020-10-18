@@ -2,25 +2,26 @@
   <v-container class="py-0">
     <v-row class="justify-center">
       <v-col xs="12" sm="10" class="py-0">
-        <v-timeline align-top>
-          <v-timeline-item v-for="n in 4" :key="n" large>
+        <v-timeline>
+          <v-timeline-item v-for="person in personList" :key="person.id" large>
             <template v-slot:icon>
               <v-avatar>
-                <img src="/noneImg.png" alt="" />
+                <img :src="person.imgUrl || '/icon.png'" alt="" />
               </v-avatar>
             </template>
             <template v-slot:opposite>
-              <span>Tus eu perfecto</span>
+              <span>{{ person.date }}</span>
             </template>
-            <v-card class="elevation-2">
-              <v-card-title class="headline">
-                Lorem ipsum
-              </v-card-title>
-              <v-card-text>
-                Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec
-                ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril
-                disputando voluptatibus, vix an salutandi sententiae.
-              </v-card-text>
+            <v-card :class="$round" elevation="10" :href="`/person/${person.id}`" nuxt>
+              <v-list-item three-line>
+                <v-list-item-content>
+                  <div class="overline mb-4">{{ person.hunkuk }} / {{ person.work }}</div>
+                  <v-list-item-title class="headline mb-1">{{ person.name }}</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ person.birthDay }} ~ {{ person.deathDay }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
             </v-card>
           </v-timeline-item>
         </v-timeline>
@@ -30,23 +31,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
-import { useState, useComputed } from './index.fn'
-import { TodayAddList, TodayPersonImgCard, TodayPersonInfoCard } from '~/components'
+import { defineComponent, onBeforeMount } from '@vue/composition-api'
+import { useBeforeMount, useComputed } from './today-person.fn'
 
 export default defineComponent({
-  middleware: ['main'],
-  components: {
-    personImage: TodayPersonImgCard,
-    personInfo: TodayPersonInfoCard,
-    addList: TodayAddList,
-  },
+  middleware: ['today-person'],
   setup(_, context) {
-    const state = useState()
+    // const state = useState()
     const computed = useComputed(context)
 
+    onBeforeMount(useBeforeMount(context))
+
     return {
-      state,
+      // state,
       ...computed,
     }
   },
