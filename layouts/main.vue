@@ -1,6 +1,10 @@
 <template>
   <v-app dark>
-    <v-app-bar color="primary" dense dark app fixes>
+    <v-navigation-drawer v-if="isMobile" v-model="state.drawer" fixed app>
+      <nav-list></nav-list>
+    </v-navigation-drawer>
+    <app-bar v-if="isMobile" v-model="state.drawer" />
+    <v-app-bar v-else color="primary" dense dark app fixes>
       <v-avatar size="40">
         <img src="/icon.png" alt="" />
       </v-avatar>
@@ -21,7 +25,7 @@
 <script lang="ts">
 import 'vuetify/dist/vuetify.min.css'
 
-import { defineComponent, reactive } from '@vue/composition-api'
+import { defineComponent, reactive, computed } from '@vue/composition-api'
 import dayjs from 'dayjs'
 import { NavList, AppBar } from '~/components'
 
@@ -30,14 +34,22 @@ export default defineComponent({
     NavList,
     AppBar,
   },
-  setup() {
+  setup(_, context) {
     const state = reactive({
       year: dayjs().year(),
       drawer: false,
     })
+    const isMobile = computed(() => {
+      const {
+        $vuetify: { breakpoint },
+      }: any = context.root
+
+      return breakpoint.smAndDown
+    })
 
     return {
       state,
+      isMobile,
     }
   },
 })
