@@ -2,6 +2,7 @@ export const MainConst = {
   $Set: {
     TodayAddPerson: 'SET/TODAY/ADD/PERSON',
     TodayPerson: 'SET/TODAY/PERSON',
+    NameAndImage: 'SET/PERSON/FACE',
   },
   $Call: {
     Item: 'CALL/ITEM',
@@ -9,6 +10,7 @@ export const MainConst = {
   $Get: {
     TodayAddPerson: 'GET/ADD/LIST',
     TodayPerson: 'GET/TODAY/PERSON',
+    NameAndImage: 'GET/PERSON/FACE',
   },
 }
 

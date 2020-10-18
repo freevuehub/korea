@@ -1,6 +1,6 @@
 import axios from 'axios'
 import endpoint from './endpoint.config'
-import { IPersonListItem, IPersonDetail, ISourceDetail } from '~/types'
+import { IPersonListItem, IPersonDetail, ISourceDetail, IPersonsNameAndImage } from '~/types'
 
 interface IApiSuccessCode {
   status: number
@@ -9,6 +9,7 @@ interface IApiSuccessCode {
 interface IMainItemResponse extends IApiSuccessCode {
   todayAddPerson: IPersonListItem[]
   todayPerson: IPersonDetail
+  personsNameAndImage: IPersonsNameAndImage[]
 }
 
 interface ISourceItemResponse extends IApiSuccessCode {

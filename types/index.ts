@@ -1,3 +1,13 @@
+export type INameAndImage = {
+  nameList: string[]
+  imageList: string[]
+}
+
+export interface IPersonsNameAndImage {
+  imgUrl: string
+  name: string
+}
+
 export interface IPersonListItem {
   birthDay: string
   deathDay: string | null
