@@ -1,7 +1,7 @@
 <template>
   <v-row justify="space-between">
     <v-col v-for="person in list" :key="person.id" cols="12" xs="12" sm="12" md="6" class="py-0">
-      <list-item class="mb-5" :item="person" />
+      <PersonListItem class="mb-5" :item="person" />
     </v-col>
   </v-row>
 </template>
@@ -13,7 +13,7 @@ import { ImageTitle, PersonListItem } from '../'
 export default defineComponent({
   components: {
     personName: ImageTitle,
-    listItem: PersonListItem,
+    PersonListItem,
   },
   props: {
     list: Array,

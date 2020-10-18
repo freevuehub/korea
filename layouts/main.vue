@@ -1,11 +1,12 @@
 <template>
   <v-app dark>
     <v-app-bar color="primary" dense dark app fixes>
-      <v-avatar>
+      <v-avatar size="40">
         <img src="/icon.png" alt="" />
       </v-avatar>
       <v-spacer />
       <v-btn text nuxt to="/person">국가유공자 리스트</v-btn>
+      <v-btn text nuxt to="/today-person">오늘의 인물들</v-btn>
     </v-app-bar>
     <v-main>
       <nuxt />
