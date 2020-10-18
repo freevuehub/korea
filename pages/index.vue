@@ -19,7 +19,7 @@
             xs="12"
             sm="4"
             class="information"
-            :class="{ on: state.todayPersonImageView, 'mb-5': !isMobile }"
+            :class="{ on: state.todayPersonInfoView, 'mb-5': !isMobile }"
           >
             <person-info :item="todayPerson" />
           </v-col>
