@@ -1,17 +1,17 @@
 <template>
   <div class="d-flex flex-wrap">
-    <FaceGridNameBg />
+    <name-bg />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { FadeImageBlock, FaceGridNameBg } from '../'
+import { FaceGridNameBg } from '@/components'
 
 export default defineComponent({
   components: {
-    FadeImageBlock,
-    FaceGridNameBg,
+    // FadeImageBlock,
+    nameBg: FaceGridNameBg,
   },
 })
 </script>
