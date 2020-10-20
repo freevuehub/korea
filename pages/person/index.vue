@@ -1,9 +1,23 @@
 <template>
   <v-container>
-    <search-form />
-    <v-divider class="my-5"></v-divider>
-    <list-item v-for="person in personList" :key="person.id" :item="person" class="mb-5" />
-    <pagination v-model="state.page" :max="state.limit" :total="total" />
+    <v-row class="align-center flex-column">
+      <v-col xs="12" sm="8">
+        <search-form />
+      </v-col>
+      <v-col xs="12" sm="8">
+        <v-divider></v-divider>
+      </v-col>
+      <v-col xs="12" sm="8">
+        <v-row class="align-center">
+          <v-col v-for="person in personList" :key="person.id" xs="12" sm="6">
+            <list-item :item="person" />
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col xs="12" sm="8">
+        <pagination v-model="state.page" :max="state.limit" :total="total" />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
