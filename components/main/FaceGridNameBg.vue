@@ -7,6 +7,7 @@ import { defineComponent } from '@vue/composition-api'
 import { useComputed } from './face-grid-name-bg.fn'
 
 export default defineComponent({
+  name: 'FaceGridNameBg',
   setup(_, context) {
     const computed = useComputed(context)
 

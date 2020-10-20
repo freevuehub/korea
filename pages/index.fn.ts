@@ -17,7 +17,7 @@ export const useState = () =>
   })
 
 export const useComputed = (context: SetupContext) => ({
-  todayAddList: computed(() => {
+  todayAddPersonList: computed(() => {
     const personList = context.root.$store.getters[`main/${MainConst.$Get.TodayAddPerson}`]
 
     return personList.map((item: IPersonListItem) => ({

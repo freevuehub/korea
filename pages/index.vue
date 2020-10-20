@@ -15,12 +15,7 @@
           >
             <person-image :url="todayPerson.imgUrl" />
           </v-col>
-          <v-col
-            xs="12"
-            :sm="state.todayPersonInfoView ? '3' : '8'"
-            class="information"
-            :class="{ on: state.todayPersonInfoView, 'mb-5': !isMobile }"
-          >
+          <v-col xs="12" sm="8" class="information" :class="{ 'mb-5': !isMobile }">
             <person-info :item="todayPerson" />
           </v-col>
           <v-col v-if="!isMobile" xs="12" sm="8">
@@ -34,10 +29,10 @@
         <h1 :class="{ 'mt-10': !isMobile, 'mb-5': !isMobile, textCenter: !isMobile }">
           오늘 등록된 유공자
         </h1>
-        <add-person v-if="!!todayAddList.length" :list="todayAddList" />
-        <v-alert v-else :class="$round" elevation="10" type="info">
+        <v-alert v-if="!todayAddPersonList.length" :class="$round" elevation="10" type="info">
           오늘 등록된 유공자가 없습니다.
         </v-alert>
+        <today-add-person-list v-else :list="todayAddPersonList" />
       </v-col>
     </v-row>
   </v-container>
@@ -47,7 +42,7 @@
 import { defineComponent, onMounted, watch } from '@vue/composition-api'
 import { useState, useComputed, useMounted, useIsMobileWatch } from './index.fn'
 import {
-  TodayAddList,
+  TodayAddPersonList,
   TodayPersonImgCard,
   TodayPersonInfoCard,
   FaceGrid,
@@ -60,7 +55,7 @@ export default defineComponent({
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
-    addPerson: TodayAddList,
+    TodayAddPersonList,
     FaceGrid,
     achivement: DetailAchivement,
   },
@@ -82,23 +77,13 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .person-info {
-  .information,
   .thumb {
     transform: translateX(0%);
     transition: all 0.8s ease;
     &.on {
       position: sticky;
-      top: 60px;
-    }
-  }
-  .thumb {
-    &.on {
       transform: translateX(-200%) translateY(30px);
-    }
-  }
-  .information {
-    &.on {
-      transform: translateX(100%) translateY(30px);
+      top: 40px;
     }
   }
 }

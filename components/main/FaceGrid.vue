@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-wrap">
-    <name-bg />
+    <face-grid-name-bg />
   </div>
 </template>
 
@@ -9,9 +9,10 @@ import { defineComponent } from '@vue/composition-api'
 import { FaceGridNameBg } from '@/components'
 
 export default defineComponent({
+  name: 'FaceGrid',
   components: {
     // FadeImageBlock,
-    nameBg: FaceGridNameBg,
+    FaceGridNameBg,
   },
 })
 </script>
