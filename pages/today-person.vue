@@ -1,7 +1,7 @@
 <template>
   <v-container class="py-0">
     <v-row class="flex-column align-center">
-      <v-col class="text-center">
+      <v-col v-if="upLoadingStatus" class="text-center up-observer">
         <v-progress-circular indeterminate color="primary" />
       </v-col>
       <v-col xs="12" sm="10" class="py-0">
@@ -48,16 +48,22 @@ export default defineComponent({
 
     onBeforeMount(useBeforeMount(context))
     onMounted(() => {
-      const onObserver: IntersectionObserverCallback = () => {
-        setTimeout(() => {
-          context.root.$router.push({
-            query: {
-              page: `${Number(context.root.$route.query.page) + 1}`,
-            },
-          })
-        }, 1000)
+      const onObserver: IntersectionObserverCallback = (entries) => {
+        entries.forEach((entrie) => {
+          console.log(entrie)
+          if (entrie.isIntersecting) {
+            setTimeout(() => {
+              context.root.$router.push({
+                query: {
+                  page: `${Number(context.root.$route.query.page) + 1}`,
+                },
+              })
+            }, 1000)
+          }
+        })
       }
       const downObserver: HTMLDivElement | null = document.querySelector('.down-observer')
+      const upObserver: HTMLDivElement | null = document.querySelector('.up-observer')
       const intersectionObserver = new IntersectionObserver(onObserver, {
         threshold: 1.0,
         rootMargin: '0px',
@@ -65,6 +71,9 @@ export default defineComponent({
 
       if (downObserver) {
         intersectionObserver.observe(downObserver)
+      }
+      if (upObserver) {
+        intersectionObserver.observe(upObserver)
       }
     })
 

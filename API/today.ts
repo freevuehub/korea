@@ -4,6 +4,7 @@ import { ITodayPersonListItem } from '~/types'
 
 export interface ITodayPersonListResponse {
   result: ITodayPersonListItem
+  totalCount: number
 }
 
 export const getTodayList = async (page: number, limit: number) => {

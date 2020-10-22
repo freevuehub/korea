@@ -21,8 +21,13 @@ export const useComputed = (context: SetupContext) => ({
 
     return list.map(listMap)
   }),
+  upLoadingStatus: computed(() => {
+    return !context.root.$route.query.page || Number(context.root.$route.query.page) !== 1
+  }),
   downLoadingStatus: computed(() => {
-    return context.root.$store.getters[`todayPerson/${TodayPersonConst.$Get.DownLoading}`]
+    const count = context.root.$store.getters[`todayPerson/${TodayPersonConst.$Get.Count}`]
+
+    return Number(context.root.$route.query.page) !== Math.ceil(count / 10)
   }),
 })
 

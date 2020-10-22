@@ -9,6 +9,7 @@ export default async (context: Context) => {
 
     const response = await getTodayList(page, limit)
 
-    await context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.List}`, response)
+    context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.List}`, response.result)
+    context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.Count}`, response.totalCount)
   }
 }
