@@ -29,10 +29,22 @@
         <h1 :class="{ 'mt-10': !isMobile, 'mb-5': !isMobile, textCenter: !isMobile }">
           오늘 등록된 유공자
         </h1>
-        <v-alert v-if="!todayAddPersonList.length" :class="$round" elevation="10" type="info">
+        <v-alert v-if="!todayAddList.length" :class="$round" elevation="10" type="info">
           오늘 등록된 유공자가 없습니다.
         </v-alert>
-        <today-add-person-list v-else :list="todayAddPersonList" />
+        <v-row v-else justify="space-between">
+          <v-col
+            v-for="person in todayAddList"
+            :key="person.id"
+            cols="12"
+            xs="12"
+            sm="12"
+            md="6"
+            class="py-0"
+          >
+            <person class="mb-5" :item="person" />
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -42,11 +54,11 @@
 import { defineComponent, onMounted, watch } from '@vue/composition-api'
 import { useState, useComputed, useMounted, useIsMobileWatch } from './index.fn'
 import {
-  TodayAddPersonList,
   TodayPersonImgCard,
   TodayPersonInfoCard,
   FaceGrid,
   DetailAchivement,
+  PersonListCardItem,
 } from '~/components'
 
 export default defineComponent({
@@ -55,9 +67,9 @@ export default defineComponent({
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
-    TodayAddPersonList,
     FaceGrid,
     achivement: DetailAchivement,
+    person: PersonListCardItem,
   },
   setup(_, context) {
     const state = useState()

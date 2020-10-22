@@ -21,9 +21,9 @@ export const useComputed = (context: SetupContext) => ({
 
     return list.map(listMap)
   }),
-  // total: computed(() => {
-  //   return context.root.$store.getters[`person/${PersonConst.$Get.Total}`]
-  // }),
+  downLoadingStatus: computed(() => {
+    return context.root.$store.getters[`todayPerson/${TodayPersonConst.$Get.DownLoading}`]
+  }),
 })
 
 export const useBeforeMount = (context: SetupContext) => () => {

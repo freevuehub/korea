@@ -63,6 +63,7 @@ export interface IWorkListItem {
 export interface ITodayPersonListItem {
   date: string
   id: number
+  personId: number
   name: string
   work: string
   hunkuk: string

@@ -70,11 +70,15 @@ export const WorkConst = {
 export const TodayPersonConst = {
   $Set: {
     List: 'SET/LIST',
+    DownLoading: 'SET/LOAD/DOWN',
+    UpLoading: 'SET/LOAD/UP',
   },
   $Call: {
     List: 'CALL/LIST',
   },
   $Get: {
     List: 'GET/LIST',
+    DownLoading: 'GET/LOAD/DOWN',
+    UpLoading: 'GET/LOAD/UP',
   },
 }

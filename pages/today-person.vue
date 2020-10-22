@@ -1,6 +1,9 @@
 <template>
   <v-container class="py-0">
-    <v-row class="justify-center">
+    <v-row class="flex-column align-center">
+      <v-col class="text-center">
+        <v-progress-circular indeterminate color="primary" />
+      </v-col>
       <v-col xs="12" sm="10" class="py-0">
         <v-timeline>
           <v-timeline-item v-for="person in personList" :key="person.id" large>
@@ -10,9 +13,9 @@
               </v-avatar>
             </template>
             <template v-slot:opposite>
-              <span>{{ person.date }}</span>
+              <span>{{ person.date }} {{ person.id }}</span>
             </template>
-            <v-card :class="$round" elevation="10" :href="`/person/${person.id}`" nuxt>
+            <v-card :class="$round" elevation="10" :href="`/person/${person.personId}`" nuxt>
               <v-list-item three-line>
                 <v-list-item-content>
                   <div class="overline mb-4">{{ person.hunkuk }} / {{ person.work }}</div>
@@ -26,12 +29,15 @@
           </v-timeline-item>
         </v-timeline>
       </v-col>
+      <v-col v-if="downLoadingStatus" class="text-center down-observer">
+        <v-progress-circular indeterminate color="primary" />
+      </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount } from '@vue/composition-api'
+import { defineComponent, onBeforeMount, onMounted } from '@vue/composition-api'
 import { useBeforeMount, useComputed } from './today-person.fn'
 
 export default defineComponent({
@@ -41,6 +47,26 @@ export default defineComponent({
     const computed = useComputed(context)
 
     onBeforeMount(useBeforeMount(context))
+    onMounted(() => {
+      const onObserver: IntersectionObserverCallback = () => {
+        setTimeout(() => {
+          context.root.$router.push({
+            query: {
+              page: `${Number(context.root.$route.query.page) + 1}`,
+            },
+          })
+        }, 1000)
+      }
+      const downObserver: HTMLDivElement | null = document.querySelector('.down-observer')
+      const intersectionObserver = new IntersectionObserver(onObserver, {
+        threshold: 1.0,
+        rootMargin: '0px',
+      })
+
+      if (downObserver) {
+        intersectionObserver.observe(downObserver)
+      }
+    })
 
     return {
       // state,
