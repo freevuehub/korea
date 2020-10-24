@@ -15,6 +15,8 @@ export default async (context: Context) => {
     imageList: [],
   })
 
+  console.log(nameAndImage)
+
   await context.app.store?.dispatch(`main/${MainConst.$Call.Item}`, {
     todayAddPerson,
     todayPerson,

@@ -1,5 +1,7 @@
 <template>
-  <div class="bg"></div>
+  <div class="bg">
+    <img :src="personFace[0]" :alt="personName[0]" />
+  </div>
 </template>
 
 <script lang="ts">

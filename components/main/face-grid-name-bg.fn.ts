@@ -13,6 +13,7 @@ interface IComputedItem {
 
 interface IComputed {
   personName: ComputedRef<string[]>
+  personFace: ComputedRef<string[]>
 }
 
 export const useState = () =>
@@ -27,5 +28,10 @@ export const useComputed = (context: SetupContext) =>
       const data: INameAndImage = context.root.$store.getters[`main/${MainConst.$Get.NameAndImage}`]
 
       return data.nameList
+    }),
+    personFace: computed<string[]>(() => {
+      const data: INameAndImage = context.root.$store.getters[`main/${MainConst.$Get.NameAndImage}`]
+
+      return data.imageList
     }),
   })
