@@ -71,10 +71,14 @@ export const TodayPersonConst = {
   $Set: {
     List: 'SET/LIST',
     Count: 'SET/LIST/COUNT',
+    UpList: 'SET/LIST/DOWN',
+    DownList: 'CALL/LIST/DOWN',
   },
   $Call: {
     List: 'CALL/LIST',
     Count: 'CALL/LIST/COUNT',
+    UpList: 'CALL/LIST/UP',
+    DownList: 'CALL/LIST/DOWN',
   },
   $Get: {
     List: 'GET/LIST',

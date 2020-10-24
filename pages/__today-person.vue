@@ -1,7 +1,7 @@
 <template>
   <v-container class="py-0">
-    <v-row class="flex-column align-center">
-      <v-col v-if="upLoadingStatus" class="text-center up-observer">
+    <v-row v-if="$route.query.page" class="flex-column align-center">
+      <v-col v-if="upLoadingStatus" id="up" class="text-center up-observer">
         <v-progress-circular indeterminate color="primary" />
       </v-col>
       <v-col xs="12" sm="10" class="py-0">
@@ -29,7 +29,7 @@
           </v-timeline-item>
         </v-timeline>
       </v-col>
-      <v-col v-if="downLoadingStatus" class="text-center down-observer">
+      <v-col v-if="downLoadingStatus" id="down" class="text-center down-observer">
         <v-progress-circular indeterminate color="primary" />
       </v-col>
     </v-row>
@@ -39,6 +39,7 @@
 <script lang="ts">
 import { defineComponent, onBeforeMount, onMounted } from '@vue/composition-api'
 import { useBeforeMount, useComputed } from './today-person.fn'
+import { TodayPersonConst } from '~/Constant'
 
 export default defineComponent({
   middleware: ['today-person'],
@@ -50,15 +51,36 @@ export default defineComponent({
     onMounted(() => {
       const onObserver: IntersectionObserverCallback = (entries) => {
         entries.forEach((entrie) => {
-          console.log(entrie)
           if (entrie.isIntersecting) {
-            setTimeout(() => {
+            if (entrie.target.id === 'down') {
               context.root.$router.push({
                 query: {
                   page: `${Number(context.root.$route.query.page) + 1}`,
                 },
               })
-            }, 1000)
+
+              context.root.$store.dispatch(
+                `todayPerson/${TodayPersonConst.$Call.DownList}`,
+                Number(context.root.$route.query.page) + 1
+              )
+
+              // window.scrollTo(0, 0)
+            }
+
+            if (entrie.target.id === 'up') {
+              context.root.$router.push({
+                query: {
+                  page: `${Number(context.root.$route.query.page) - 1}`,
+                },
+              })
+
+              context.root.$store.dispatch(
+                `todayPerson/${TodayPersonConst.$Call.UpList}`,
+                Number(context.root.$route.query.page) - 1
+              )
+
+              // window.scrollTo(0, 0)
+            }
           }
         })
       }

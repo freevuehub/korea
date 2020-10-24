@@ -6,10 +6,13 @@ export default async (context: Context) => {
   if (context.route.query.page) {
     const page = Number(context.route.query.page)
     const limit = 10
+    const count = context.app.store?.getters[`todayPerson/${TodayPersonConst.$Get.Count}`]
 
-    const response = await getTodayList(page, limit)
+    if (!count) {
+      const { result, totalCount } = await getTodayList(page, limit)
 
-    context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.List}`, response.result)
-    context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.Count}`, response.totalCount)
+      context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.List}`, result)
+      context.app.store?.dispatch(`todayPerson/${TodayPersonConst.$Call.Count}`, totalCount)
+    }
   }
 }

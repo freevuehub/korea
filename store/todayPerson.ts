@@ -1,3 +1,4 @@
+import { getTodayList } from '~/API'
 import { TodayPersonConst } from '~/Constant'
 import { ITodayPersonListItem } from '~/types'
 
@@ -13,10 +14,16 @@ export const state = (): IState => ({
 
 export const mutations = {
   [TodayPersonConst.$Set.List](state: IState, payload: ITodayPersonListItem[]) {
-    state.list = [...state.list, ...payload]
+    state.list = payload
   },
   [TodayPersonConst.$Set.Count](state: IState, payload: number) {
     state.count = payload
+  },
+  [TodayPersonConst.$Set.UpList](state: IState, payload: ITodayPersonListItem[]) {
+    state.list = [...payload, ...state.list]
+  },
+  [TodayPersonConst.$Set.DownList](state: IState, payload: ITodayPersonListItem[]) {
+    state.list = [...state.list, ...payload]
   },
 }
 
@@ -26,6 +33,16 @@ export const actions = {
   },
   [TodayPersonConst.$Call.Count](store: any, payload: number) {
     store.commit(TodayPersonConst.$Set.Count, payload)
+  },
+  async [TodayPersonConst.$Call.UpList](store: any, page: number) {
+    const { result } = await getTodayList(page, 10)
+
+    store.commit(TodayPersonConst.$Set.UpList, result)
+  },
+  async [TodayPersonConst.$Call.DownList](store: any, page: number) {
+    const { result } = await getTodayList(page, 10)
+
+    store.commit(TodayPersonConst.$Set.DownList, result)
   },
 }
 
