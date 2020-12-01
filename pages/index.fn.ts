@@ -61,23 +61,3 @@ export const useIsMobileWatch = (state: IState) => (value: boolean) => {
     state.todayPersonInfoView = false
   }
 }
-
-export const useMounted = (context: SetupContext, state: IState) => () => {
-  const onWindowScroll = () => {
-    const {
-      $vuetify: { breakpoint },
-    }: any = context.root
-
-    if (!breakpoint.smAndDown) {
-      const { refs }: any = context
-      const $todayPerson = refs['today-person']
-
-      if (window.scrollY >= $todayPerson.offsetTop) {
-        state.todayPersonImageView = window.scrollY >= $todayPerson.children[1].offsetTop - 12
-        state.todayPersonInfoView = window.scrollY >= $todayPerson.children[2].offsetTop - 12
-      }
-    }
-  }
-
-  window.addEventListener('scroll', onWindowScroll)
-}

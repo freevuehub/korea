@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, watch } from '@vue/composition-api'
-import { useState, useComputed, useMounted, useIsMobileWatch } from './index.fn'
+import { defineComponent, watch } from '@vue/composition-api'
+import { useState, useComputed, useIsMobileWatch } from './index.fn'
 import {
   TodayPersonImgCard,
   TodayPersonInfoCard,
@@ -55,8 +55,6 @@ export default defineComponent({
   setup(_, context) {
     const state = useState()
     const computed = useComputed(context)
-
-    onMounted(useMounted(context, state))
 
     watch(() => computed.isMobile.value, useIsMobileWatch(state))
 
