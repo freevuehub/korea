@@ -1,4 +1,3 @@
-import { getTodayList } from '~/API'
 import { TodayPersonConst } from '~/Constant'
 import { ITodayPersonListItem } from '~/types'
 
@@ -33,16 +32,6 @@ export const actions = {
   },
   [TodayPersonConst.$Call.Count](store: any, payload: number) {
     store.commit(TodayPersonConst.$Set.Count, payload)
-  },
-  async [TodayPersonConst.$Call.UpList](store: any, page: number) {
-    const { result } = await getTodayList(page, 10)
-
-    store.commit(TodayPersonConst.$Set.UpList, result)
-  },
-  async [TodayPersonConst.$Call.DownList](store: any, page: number) {
-    const { result } = await getTodayList(page, 10)
-
-    store.commit(TodayPersonConst.$Set.DownList, result)
   },
 }
 

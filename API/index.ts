@@ -52,5 +52,4 @@ export const getSourceDetail = (id: number): Promise<ISourceItemResponse> =>
 export * from './person'
 export * from './hunkuk'
 export * from './work'
-export * from './today'
 export * from './history'

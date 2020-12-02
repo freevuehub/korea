@@ -1,6 +1,6 @@
 import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
-import { MainConst } from '~/Constant'
+import { MainConst, HistoryConst } from '~/Constant'
 import { IPersonListItem, IPersonDetail } from '~/types'
 
 interface IState {
@@ -47,6 +47,9 @@ export const useComputed = (context: SetupContext) => ({
     }: any = context.root
 
     return breakpoint.smAndDown
+  }),
+  todayHistoryEvent: computed(() => {
+    return context.root.$store.getters[`history/${HistoryConst.$Get.Item}`]
   }),
 })
 
