@@ -29,9 +29,9 @@ interface IConfig {
       list(): string
     }
   }
-  todayPerson: {
+  historyEvent: {
     request: {
-      list(): string
+      item(id: number): string
     }
   }
 }
@@ -63,9 +63,9 @@ const config: IConfig = {
       list: () => `${SERVER}/work`,
     },
   },
-  todayPerson: {
+  historyEvent: {
     request: {
-      list: () => `${SERVER}/today-person`,
+      item: (id: number) => `${SERVER}/history/${id}`,
     },
   },
 }
