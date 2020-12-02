@@ -85,3 +85,15 @@ export const TodayPersonConst = {
     Count: 'GET/LIST/COUNT',
   },
 }
+
+export const HistoryConst = {
+  $Set: {
+    Item: 'SET/ITEM',
+  },
+  $Call: {
+    Item: 'CALL/ITEM',
+  },
+  $Get: {
+    Item: 'GET/ITEM',
+  },
+}
