@@ -37,7 +37,6 @@ import { useState, useComputed, useIsMobileWatch } from './index.fn'
 import {
   TodayPersonImgCard,
   TodayPersonInfoCard,
-  FaceGrid,
   DetailAchivement,
   PersonListCardItem,
 } from '~/components'
@@ -48,7 +47,6 @@ export default defineComponent({
   components: {
     personImage: TodayPersonImgCard,
     personInfo: TodayPersonInfoCard,
-    FaceGrid,
     achivement: DetailAchivement,
     person: PersonListCardItem,
   },
