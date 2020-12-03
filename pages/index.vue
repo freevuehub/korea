@@ -6,10 +6,10 @@
           ref="today-person"
           :class="['align-start', 'person-info', 'py-0', { 'flex-column': isMobile }]"
         >
-          <v-col xs="12" sm="6" class="thumb" :class="{ pc: !isMobile }">
+          <v-col xs="12" sm="5" class="thumb" :class="{ pc: !isMobile }">
             <person-image :url="todayPerson.imgUrl" />
           </v-col>
-          <v-col xs="12" sm="6">
+          <v-col xs="12" sm="7">
             <person-info :item="todayPerson" />
             <v-card v-if="!isMobile" :class="$round" elevation="10">
               <achivement :achivement="todayPerson.achivement" />
@@ -17,15 +17,12 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col xs="12" sm="10" md="10" lg="8" class="py-0">
+      <v-col xs="12" sm="10" md="10" lg="8" class="py-0 mb-5">
         <v-row
           ref="today-person"
           :class="['align-start', 'person-info', 'py-0', { 'flex-column': isMobile }]"
         >
-          <v-col xs="12" sm="6" class="thumb" :class="{ pc: !isMobile }">
-            <person-image :url="todayHistoryEvent.imgUrl" />
-          </v-col>
-          <v-col xs="12" sm="6">
+          <v-col xs="12" sm="7">
             <v-card :class="[$round, 'mb-5']" elevation="10">
               <v-card-title>{{ todayHistoryEvent.name }}</v-card-title>
             </v-card>
@@ -34,6 +31,25 @@
                 <md-render :markdown="todayHistoryEvent.contents" />
               </v-card-text>
             </v-card>
+          </v-col>
+          <v-col xs="12" sm="5" class="thumb" :class="{ pc: !isMobile }">
+            <person-image :url="todayHistoryEvent.imgUrl" />
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col xs="12" sm="10" md="10" lg="8" class="py-0">
+        <v-row :class="['py-0', { 'flex-column': isMobile }]">
+          <v-col xs="12" sm="6">
+            <person-image />
+          </v-col>
+          <v-col xs="12" sm="6">
+            <person-image />
+          </v-col>
+          <v-col xs="12" sm="6">
+            <person-image />
+          </v-col>
+          <v-col xs="12" sm="6">
+            <person-image />
           </v-col>
         </v-row>
       </v-col>
