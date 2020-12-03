@@ -24,7 +24,9 @@
               <v-card-title>{{ todayHistoryEvent.name }}</v-card-title>
             </v-card>
             <v-card v-if="!isMobile" :class="$round" elevation="10">
-              <achivement :achivement="todayHistoryEvent.contents" />
+              <v-card-text>
+                <md-render :markdown="todayHistoryEvent.contents" />
+              </v-card-text>
             </v-card>
           </v-col>
         </v-row>
@@ -41,6 +43,7 @@ import {
   TodayPersonInfoCard,
   DetailAchivement,
   PersonListCardItem,
+  MarkdownRender,
 } from '~/components'
 
 export default defineComponent({
@@ -51,6 +54,7 @@ export default defineComponent({
     personInfo: TodayPersonInfoCard,
     achivement: DetailAchivement,
     person: PersonListCardItem,
+    mdRender: MarkdownRender,
   },
   setup(_, context) {
     const state = useState()

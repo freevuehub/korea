@@ -7,6 +7,7 @@ export { default as Pagination } from './Pagination.vue'
 export { default as PersonSource } from './PersonSource.vue'
 export { default as ImageTitle } from './ImageTitle.vue'
 export { default as DetailAchivement } from './DetailAchivement.vue'
+export { default as MarkdownRender } from './MarkdownRender.vue'
 
 export * from './main'
 export * from './person'
