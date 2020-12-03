@@ -36,8 +36,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .md-render {
+  h1,
+  h3,
   h2 {
     margin-bottom: 20px;
+  }
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 16px;
   }
   hr {
     opacity: 0.5;
