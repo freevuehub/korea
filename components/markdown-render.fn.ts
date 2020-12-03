@@ -16,6 +16,7 @@ const listReg = /-\s?(.+)/
 
 const contentsFilter = (string: string) => !!string
 const mdOfDom = (string: string) => {
+  console.log(string)
   if (titleReg.test(string)) {
     const [, tag, value] = titleReg.exec(string) || ['', '', '']
 
@@ -30,11 +31,11 @@ const mdOfDom = (string: string) => {
 
   return { component: 'p', value: string }
 }
-const domReduce = (prev: IDomTree[], cur: IDomTree, index: number) => {
+const domReduce = (prev: IDomTree[], cur: IDomTree) => {
   switch (cur.component) {
     case 'li':
-      if (prev[index - 1].component === 'ul') {
-        prev[index - 1].tree?.push(cur)
+      if (prev[prev.length - 1].component === 'ul') {
+        prev[prev.length - 1].tree?.push(cur)
 
         return prev
       }

@@ -43,7 +43,8 @@ export default defineComponent({
   }
   h4,
   h5,
-  h6 {
+  h6,
+  ul {
     margin-bottom: 16px;
   }
   hr {
