@@ -16,7 +16,6 @@ const listReg = /-\s?(.+)/
 
 const contentsFilter = (string: string) => !!string
 const mdOfDom = (string: string) => {
-  console.log(string)
   if (titleReg.test(string)) {
     const [, tag, value] = titleReg.exec(string) || ['', '', '']
 
