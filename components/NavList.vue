@@ -29,7 +29,7 @@ export default defineComponent({
           to: '/person',
         },
         {
-          icon: 'timelapse',
+          icon: 'calendar_today',
           title: '역사적인 순간들',
           to: '/event',
         },
