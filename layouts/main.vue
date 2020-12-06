@@ -10,6 +10,7 @@
       </v-avatar>
       <v-spacer />
       <v-btn text nuxt to="/person">국가유공자 리스트</v-btn>
+      <v-btn text nuxt to="/event">역사적인 순간들</v-btn>
     </v-app-bar>
     <v-main>
       <nuxt />
