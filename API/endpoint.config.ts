@@ -31,6 +31,7 @@ interface IConfig {
   }
   historyEvent: {
     request: {
+      list(): string
       item(id: number): string
     }
   }
@@ -65,6 +66,7 @@ const config: IConfig = {
   },
   historyEvent: {
     request: {
+      list: () => `${SERVER}/history`,
       item: (id: number) => `${SERVER}/history/${id}`,
     },
   },

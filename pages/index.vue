@@ -40,7 +40,11 @@
       <v-col xs="12" sm="10" md="10" lg="8" class="py-0">
         <v-row :class="['py-0', { 'flex-column': isMobile }]">
           <v-col xs="12" sm="6">
-            <person-image />
+            <v-card href="https://www.buymeacoffee.com/freevue">
+              <img
+                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=freevue&button_colour=71abbd&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00"
+              />
+            </v-card>
           </v-col>
           <v-col xs="12" sm="6">
             <person-image />
