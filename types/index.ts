@@ -61,3 +61,11 @@ export interface ITodayPersonListItem {
   birthDay: string
   deathDay: string
 }
+
+export interface IHistoryItem {
+  id: number
+  name: string
+  date: string
+  contents: string
+  imgUrl: string | null
+}

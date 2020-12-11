@@ -89,11 +89,14 @@ export const TodayPersonConst = {
 export const HistoryConst = {
   $Set: {
     Item: 'SET/ITEM',
+    List: 'SET/LIST',
   },
   $Call: {
     Item: 'CALL/ITEM',
+    List: 'CALL/LIST',
   },
   $Get: {
     Item: 'GET/ITEM',
+    List: 'GET/LIST',
   },
 }

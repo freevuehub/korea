@@ -1,9 +1,14 @@
 import endpoint from './endpoint.config'
 import { AxiosGet } from './util'
 
-export const getHistoryEventList = async (month: number) => {
+interface IGetListParams {
+  month: number
+  year: number
+}
+
+export const getHistoryEventList = async (params: IGetListParams) => {
   try {
-    const response = await AxiosGet<any>(endpoint.historyEvent.request.list(), { params: { month } })
+    const response = await AxiosGet<any>(endpoint.historyEvent.request.list(), { params })
 
     return response
   } catch (err) {
