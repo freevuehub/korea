@@ -10,7 +10,7 @@
       </v-avatar>
       <v-spacer />
       <v-btn text nuxt to="/person">국가유공자 리스트</v-btn>
-      <v-btn text nuxt to="/event">역사적인 순간들</v-btn>
+      <v-btn text nuxt :to="`/event/${state.year}/${state.month}`">역사적인 순간들</v-btn>
     </v-app-bar>
     <v-main>
       <nuxt />
@@ -37,6 +37,7 @@ export default defineComponent({
   setup(_, context) {
     const state = reactive({
       year: dayjs().year(),
+      month: dayjs().month() + 1,
       drawer: false,
     })
     const isMobile = computed(() => {

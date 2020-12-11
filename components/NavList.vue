@@ -13,6 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from '@vue/composition-api'
+import dayjs from 'dayjs'
 
 export default defineComponent({
   setup() {
@@ -31,7 +32,7 @@ export default defineComponent({
         {
           icon: 'calendar_today',
           title: '역사적인 순간들',
-          to: '/event',
+          to: `/event/${dayjs().year()}/${dayjs().month() + 1}`,
         },
         // {
         //   icon: 'today',
