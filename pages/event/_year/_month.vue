@@ -23,6 +23,8 @@
             event-overlap-mode="stack"
             :event-overlap-threshold="30"
             :event-color="getEventColor"
+            start="YYYY-MM-DD"
+            end="YYYY-MM-DD"
             @change="getEvents"
           ></v-calendar>
         </v-sheet>
@@ -33,13 +35,13 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { useState, useComputed, useGetEventColor, useRnd, useGetEvents } from './event.fn'
+import { useState, useComputed, useGetEventColor, useRnd, useGetEvents } from './_month.fn'
 
 export default defineComponent({
   middleware: ['event'],
-  setup() {
+  setup(_, context) {
     const state = useState()
-    const computed = useComputed(state)
+    const computed = useComputed(context, state)
     const getEventColor = useGetEventColor()
     const rnd = useRnd()
     const getEvents = useGetEvents(state, rnd)

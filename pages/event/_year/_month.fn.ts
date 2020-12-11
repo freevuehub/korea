@@ -1,5 +1,8 @@
-import { reactive, computed } from '@vue/composition-api'
+import { reactive, computed, SetupContext } from '@vue/composition-api'
 import dayjs from 'dayjs'
+import 'dayjs/locale/ko'
+import { HistoryConst } from '~/Constant'
+import { IHistoryItem } from '~/types'
 
 interface IState {
   weekday: number[]
@@ -11,15 +14,28 @@ interface IState {
 
 export const useState = () => reactive<IState>({
   weekday: [0, 1, 2, 3, 4, 5, 6],
-  value: '2020-01-01',
+  value: '1895-01-01',
   events: [],
   colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
   names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
 })
 
-export const useComputed = (state: IState) => ({
+export const useComputed = (context: SetupContext, state: IState) => ({
   nowMonth: computed(() => {
     return dayjs(state.value, 'YYYY-MM-DD').format('YYYY-MM')
+  }),
+  eventList: computed(() => {
+    const data = context.root.$store.getters[`history/${HistoryConst.$Get.List}`]
+
+    return data.map((item: IHistoryItem) => {
+      return {
+        color: 'green',
+        end: item.date,
+        start: item.date,
+        timed: false,
+        ...item,
+      }
+    })
   })
 })
 
@@ -51,7 +67,7 @@ export const useGetEvents = (state: IState, rnd: any) => ({ start, end }: any) =
       start: first,
       end: second,
       color: state.colors[rnd(0, state.colors.length - 1)],
-      timed: !allDay,
+      timed: false,
     })
   }
 
