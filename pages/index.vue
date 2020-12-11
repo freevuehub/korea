@@ -39,21 +39,32 @@
       </v-col>
       <v-col xs="12" sm="10" md="10" lg="8" class="py-0">
         <v-row :class="['py-0', { 'flex-column': isMobile }]">
-          <v-col xs="12" sm="6">
-            <v-card href="https://www.buymeacoffee.com/freevue">
-              <img
-                src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=freevue&button_colour=71abbd&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=FFDD00"
-              />
+          <v-col xs="12" sm="12">
+            <v-card href="https://e-gonghun.mpva.go.kr/user/index.do" target="_blank">
+              <v-img src="https://e-gonghun.mpva.go.kr/comm/img/logo-2019.png" />
             </v-card>
           </v-col>
           <v-col xs="12" sm="6">
-            <person-image />
+            <v-card href="https://www.buymeacoffee.com/freevue" target="_blank">
+              <v-img
+                class="white--text align-end"
+                height="260"
+                src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537_960_720.jpg"
+              >
+                <v-card-title>Buy Me a Coffee!</v-card-title>
+              </v-img>
+            </v-card>
           </v-col>
           <v-col xs="12" sm="6">
-            <person-image />
-          </v-col>
-          <v-col xs="12" sm="6">
-            <person-image />
+            <v-card href="https://www.youtube.com/channel/UCkZCZu6eLLDGiuVr5O3awgw" target="_blank">
+              <v-img
+                class="black--text align-end"
+                height="260"
+                src="https://cdn.pixabay.com/photo/2016/09/21/11/31/youtube-1684601_960_720.png"
+              >
+                <v-card-title>Go to YouTube</v-card-title>
+              </v-img>
+            </v-card>
           </v-col>
         </v-row>
       </v-col>
