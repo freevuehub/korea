@@ -3,7 +3,6 @@ import { AxiosGet } from './util'
 
 export const getHistoryEventList = async (month: number) => {
   try {
-    console.log(month)
     const response = await AxiosGet<any>(endpoint.historyEvent.request.list(), { params: { month } })
 
     return response
