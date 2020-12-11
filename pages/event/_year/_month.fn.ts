@@ -12,13 +12,17 @@ interface IState {
   names: string[]
 }
 
-export const useState = () => reactive<IState>({
-  weekday: [0, 1, 2, 3, 4, 5, 6],
-  value: '1895-01-01',
-  events: [],
-  colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-  names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
-})
+export const useState = (context: SetupContext) => {
+  const { params } = context.root.$route
+
+  return reactive<IState>({
+    weekday: [0, 1, 2, 3, 4, 5, 6],
+    value: `${params.year}-${params.month}-01`,
+    events: [],
+    colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
+    names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+  })
+}
 
 export const useComputed = (context: SetupContext, state: IState) => ({
   nowMonth: computed(() => {

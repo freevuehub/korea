@@ -40,7 +40,7 @@ import { useState, useComputed, useGetEventColor, useRnd, useGetEvents } from '.
 export default defineComponent({
   middleware: ['event'],
   setup(_, context) {
-    const state = useState()
+    const state = useState(context)
     const computed = useComputed(context, state)
     const getEventColor = useGetEventColor()
     const rnd = useRnd()
