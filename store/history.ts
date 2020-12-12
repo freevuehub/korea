@@ -1,5 +1,5 @@
 import { HistoryConst } from '~/Constant'
-import { getHistoryEventList } from '~/API'
+import { getHistoryEventList, getHistoryEventItem } from '~/API'
 import { IHistoryItem } from '~/types'
 
 interface IState {
@@ -30,6 +30,15 @@ export const mutations = {
 export const actions = {
   [HistoryConst.$Call.Item](store: any, payload: IHistoryItem) {
     store.commit(HistoryConst.$Set.Item, payload)
+  },
+  async [HistoryConst.$Call.Detail](store: any, id: number) {
+    try {
+      const { result } = await getHistoryEventItem(id)
+
+      store.commit(HistoryConst.$Set.Item, result)
+    } catch (error) {
+      return Promise.reject(error)
+    }
   },
   async [HistoryConst.$Call.List](store: any, params: { month: number, year: number }) {
     try {

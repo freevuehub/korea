@@ -94,6 +94,7 @@ export const HistoryConst = {
   $Call: {
     Item: 'CALL/ITEM',
     List: 'CALL/LIST',
+    Detail: 'CALL/DETAIL',
   },
   $Get: {
     Item: 'GET/ITEM',
