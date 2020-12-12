@@ -26,10 +26,12 @@
             start="YYYY-MM-DD"
             end="YYYY-MM-DD"
             @change="getEvents"
+            @click:event="onEventClick"
           ></v-calendar>
         </v-sheet>
       </v-card-text>
     </v-card>
+    <nuxt-child v-if="$route.params.id" />
   </v-container>
 </template>
 
@@ -85,6 +87,14 @@ export default defineComponent({
         })
       }
     }
+    const onEventClick = ({ event }: any) => {
+      context.root.$router.push({
+        params: {
+          ...context.root.$route.params,
+          id: event.id,
+        },
+      })
+    }
 
     return {
       state,
@@ -94,6 +104,7 @@ export default defineComponent({
       getEvents,
       onNextClick,
       onPrevClick,
+      onEventClick,
     }
   },
 })
