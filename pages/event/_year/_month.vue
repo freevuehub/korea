@@ -3,13 +3,13 @@
     <v-card :class="$round">
       <v-card-text>
         <v-sheet class="d-flex mb-5">
-          <v-btn icon @click="$refs.calendar.prev()">
+          <v-btn icon @click="onPrevClick">
             <v-icon>mdi-chevron-left</v-icon>
           </v-btn>
           <v-spacer />
           <v-card-title class="pa-0">{{ nowMonth }}</v-card-title>
           <v-spacer />
-          <v-btn icon @click="$refs.calendar.next()">
+          <v-btn icon @click="onNextClick">
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </v-sheet>
@@ -19,7 +19,7 @@
             v-model="state.value"
             :weekdays="state.weekday"
             type="month"
-            :events="state.events"
+            :events="eventList"
             event-overlap-mode="stack"
             :event-overlap-threshold="30"
             :event-color="getEventColor"
@@ -45,6 +45,46 @@ export default defineComponent({
     const getEventColor = useGetEventColor()
     const rnd = useRnd()
     const getEvents = useGetEvents(state, rnd)
+    const onNextClick = () => {
+      const { params } = context.root.$route
+      const currentMonth = Number(params.month)
+
+      if (currentMonth === 12) {
+        context.root.$router.push({
+          params: {
+            year: `${Number(params.year) + 1}`,
+            month: '1',
+          },
+        })
+      } else {
+        context.root.$router.push({
+          params: {
+            ...params,
+            month: `${currentMonth + 1}`,
+          },
+        })
+      }
+    }
+    const onPrevClick = () => {
+      const { params } = context.root.$route
+      const currentMonth = Number(params.month)
+
+      if (currentMonth === 1) {
+        context.root.$router.push({
+          params: {
+            year: `${Number(params.year) - 1}`,
+            month: '12',
+          },
+        })
+      } else {
+        context.root.$router.push({
+          params: {
+            ...params,
+            month: `${currentMonth - 1}`,
+          },
+        })
+      }
+    }
 
     return {
       state,
@@ -52,6 +92,8 @@ export default defineComponent({
       getEventColor,
       rnd,
       getEvents,
+      onNextClick,
+      onPrevClick,
     }
   },
 })
