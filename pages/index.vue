@@ -23,11 +23,9 @@
           :class="['align-start', 'person-info', 'py-0', { 'flex-column': isMobile }]"
         >
           <v-col xs="12" sm="7">
-            <v-card :class="[$round, 'mb-5']" elevation="10">
+            <v-card :class="$round" elevation="10">
               <v-card-title>{{ todayHistoryEvent.name }}</v-card-title>
-            </v-card>
-            <v-card v-if="!isMobile" :class="$round" elevation="10">
-              <v-card-text>
+              <v-card-text v-if="!isMobile">
                 <md-render :markdown="todayHistoryEvent.contents" />
               </v-card-text>
             </v-card>
@@ -40,8 +38,17 @@
       <v-col xs="12" sm="10" md="10" lg="8" class="py-0">
         <v-row :class="['py-0', { 'flex-column': isMobile }]">
           <v-col xs="12" sm="12">
-            <v-card href="https://e-gonghun.mpva.go.kr/user/index.do" target="_blank">
-              <v-img src="https://e-gonghun.mpva.go.kr/comm/img/logo-2019.png" />
+            <v-card
+              href="https://e-gonghun.mpva.go.kr/user/index.do"
+              target="_blank"
+              light
+              class="pa-5"
+            >
+              <v-img
+                width="400"
+                src="https://e-gonghun.mpva.go.kr/comm/img/logo-2019.png"
+                class="mx-auto"
+              />
             </v-card>
           </v-col>
           <v-col xs="12" sm="6">
