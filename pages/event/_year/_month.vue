@@ -1,37 +1,43 @@
 <template>
   <v-container fluid>
-    <v-card :class="$round">
-      <v-card-text>
-        <v-sheet class="d-flex mb-5">
-          <v-btn icon @click="onPrevClick">
-            <v-icon>mdi-chevron-left</v-icon>
-          </v-btn>
-          <v-spacer />
-          <v-card-title class="pa-0">{{ nowMonth }}</v-card-title>
-          <v-spacer />
-          <v-btn icon @click="onNextClick">
-            <v-icon>mdi-chevron-right</v-icon>
-          </v-btn>
-        </v-sheet>
-        <v-sheet height="600">
-          <v-calendar
-            ref="calendar"
-            v-model="state.value"
-            :weekdays="state.weekday"
-            type="month"
-            :events="eventList"
-            event-overlap-mode="stack"
-            :event-overlap-threshold="30"
-            :event-color="getEventColor"
-            start="YYYY-MM-DD"
-            end="YYYY-MM-DD"
-            @change="getEvents"
-            @click:event="onEventClick"
-          ></v-calendar>
-        </v-sheet>
-      </v-card-text>
-    </v-card>
-    <nuxt-child v-if="$route.params.id" />
+    <v-row class="align-center flex-column">
+      <v-col xs="12" sm="10" md="10" lg="8">
+        <v-card :class="$round">
+          <v-card-text>
+            <v-sheet class="d-flex mb-5">
+              <v-btn icon @click="onPrevClick">
+                <v-icon>mdi-chevron-left</v-icon>
+              </v-btn>
+              <v-spacer />
+              <v-card-title class="pa-0">{{ nowMonth }}</v-card-title>
+              <v-spacer />
+              <v-btn icon @click="onNextClick">
+                <v-icon>mdi-chevron-right</v-icon>
+              </v-btn>
+            </v-sheet>
+            <v-sheet height="600">
+              <v-calendar
+                ref="calendar"
+                v-model="state.value"
+                :weekdays="state.weekday"
+                type="month"
+                :events="eventList"
+                event-overlap-mode="stack"
+                :event-overlap-threshold="30"
+                :event-color="getEventColor"
+                start="YYYY-MM-DD"
+                end="YYYY-MM-DD"
+                @change="getEvents"
+                @click:event="onEventClick"
+              ></v-calendar>
+            </v-sheet>
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <v-col v-if="$route.params.id" xs="12" sm="10" md="10" lg="8">
+        <nuxt-child />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
